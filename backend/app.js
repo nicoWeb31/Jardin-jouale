@@ -4,9 +4,10 @@ const app = express();
 import morgan from 'morgan';
 
 //morgan
-if(process.env.NODE_ENV !== 'production') {
-    app.use(morgan('dev'));
-}
+// if(process.env.NODE_ENV !== 'production') {
+//     app.use(morgan('dev'));
+//     console.log('morgan work in dev mode !')
+// }
 
 //for production
 const __dirname = path.resolve();
