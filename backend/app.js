@@ -1,12 +1,12 @@
 import express from 'express';
 import path from 'path';
 const app = express();
-import morgan from 'morgan';
+// import morgan from 'morgan';
 
-//morgan
-if(process.env.NODE_ENV !== 'production') {
-    app.use(morgan('dev'));
-}
+// //morgan
+// if(process.env.NODE_ENV !== 'production') {
+//     app.use(morgan('dev'));
+// }
 
 //for production
 const __dirname = path.resolve();
