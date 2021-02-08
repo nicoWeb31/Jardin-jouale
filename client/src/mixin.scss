@@ -1,0 +1,37 @@
+
+//Media query manager
+// 0-600px :  phone
+// 600-900px :  tab-portrait
+// 900-1200px :  tab-landscape
+// [1200-1800] :  is the normal style apply
+// 1800 + px :  big desktop
+
+// breackPoint argument choices
+// -phone
+// -tab-port
+// -tab-land 
+// -big-desktop
+
+//1em === 16px
+
+@mixin respond($breakPoint) {
+
+    @if $breakPoint == phone {
+        @media (max-width: 37.5em) { @content }; //600px
+    }
+
+    @if $breakPoint == tab-port {
+        @media (max-width: 56.25em) { @content }; //900px
+    }
+
+    @if $breakPoint == tab-land {
+        @media (max-width: 75em ) { @content };//1200px
+    }
+
+    @if $breakPoint == big-desktop {
+        @media (min-width: 112.5em) { @content };//1800px
+    }
+
+
+
+}

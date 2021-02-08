@@ -1,0 +1,74 @@
+@import "./variable";
+
+
+.header {
+    z-index: 10;
+    height: 25vh;
+    // background-image: linear-gradient(
+    //         96deg,
+    //         rgba($c-p, 0.4) 0%,
+    //         rgba($c-s, 0.4) 35%,
+    //         rgba($c-t, 0.4) 100%
+    //     ),
+    //     url("/images/header.jpg");
+    // background-size: cover;
+    // background-position: top;
+
+    background-color:$c-c;
+
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+    position: relative;
+
+    &__logo {
+        color: $c-w;
+    }
+
+    &__logo-box {
+        position: absolute;
+        top: 5rem;
+        left: 5rem;
+    }
+
+    .heading-primary {
+        color: $c-w;
+        text-transform: uppercase;
+        /* bug de tranblement */
+        backface-visibility: hidden;
+
+        &--main {
+            display: block;
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: 2.3rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            animation-name: moveInLeft;
+            animation-duration: 2s;
+            /* animation-delay:1s;
+            animation-duration: 3; */
+            animation-timing-function: ease-in;
+            text-shadow: 0.4rem 0.3rem 0 $c-b;
+        }
+
+        &--secondary {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 1.5rem;
+            text-align: center;
+            animation-name: delaDroite;
+            animation-duration: 2s;
+            animation-timing-function: ease-in;
+            text-shadow: 0.4rem 0.3rem 0 $c-b;
+            margin-bottom: 6rem;
+        }
+    }
+}
+
+.text-box {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
