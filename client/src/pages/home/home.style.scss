@@ -1,8 +1,16 @@
+
+
 .mainHome {
-    margin-top: -10rem;
+
+    width: 100%;
+    height: 200vh;
+
     background-image: url("../../img/home/header.jpg");
     background-size: cover;
     background-position: top;
-    width: 100%;
-    height: 1999px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+
 }
