@@ -1,6 +1,6 @@
 import './App.scss';
 import BtnNav from './components/btnNav/BtnNav';
-import Header from './components/headers/Header';
+import NavBar from './components/navBar/NavBar';
 import Home from './pages/home/Home';
 
 
@@ -8,8 +8,8 @@ import Home from './pages/home/Home';
 function App() {
     return (
         <div className="App">
+            <NavBar/>
             <BtnNav/>
-            <Header />
             <Home />
         </div>
     );

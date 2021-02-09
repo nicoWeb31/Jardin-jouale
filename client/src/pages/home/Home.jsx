@@ -1,12 +1,25 @@
 import React from 'react';
-import './home.style.scss'
+import { Link } from 'react-router-dom';
+import './home.style.scss';
 
 const Home = () => {
     return (
         <main className="mainHome">
-            home
-        </main>
-    )
-}
+            <div className="card-container">
+                <div className="card">le marché</div>
+                <div className="card">Decouvir les Jardins de la joualle</div>
+                <div className="card">Espace Jardinier</div>
 
-export default Home
+                <Link to="/contact" className="navLink">
+                    <div className="card">
+                        <h3> Nous Contacter</h3>
+
+                        <i class="fas fa-file-signature fa-3x"></i>
+                    </div>
+                </Link>
+            </div>
+        </main>
+    );
+};
+
+export default Home;
