@@ -32,7 +32,7 @@ const BtnNav = () => {
                             className="navigation__item"
                             onClick={() => setToggle(false)}
                         >
-                            <Link to="/home" className="navigation__link">Accueil</Link>
+                            <Link to="/" className="navigation__link">Accueil</Link>
                         </li>
                         <li
                             className="navigation__item"
@@ -50,7 +50,7 @@ const BtnNav = () => {
                             className="navigation__item"
                             onClick={() => setToggle(false)}
                         >
-                            <Link to="/marche" className="navigation__link">Contact</Link>
+                            <Link to="/contact" className="navigation__link">Contact</Link>
                         </li>
                     </ul>
                 </nav>

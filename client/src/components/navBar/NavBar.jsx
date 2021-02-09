@@ -4,7 +4,25 @@ import './navBar.style.scss';
 const NavBar = () => {
     return (
         <nav className="navBar">
-            <i className="fas fa-home fa-3x header__logo"></i>
+
+
+                <div className="nav-header">
+                    <div class="nav-title">Jardin de la joualle</div>
+                </div>
+
+                <div className="nav-links">
+                    <a href="//github.io/jo_geek" target="_blank">
+                        Connexion
+                    </a>
+                    <a
+                        href="http://stackoverflow.com/users/4084003/"
+                        target="_blank"
+                    >
+                        Inscription
+                    </a>
+
+
+                </div>
         </nav>
     );
 };

@@ -12,9 +12,9 @@
     background-image: url('../../img/home/home2.png');
     background-size: cover;
     background-position: top;
-    position: absolute;
-    top: 0;
-    right: 0;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
 
     .card-container {
         display: flex;
@@ -73,8 +73,8 @@
 
             @include respond(phone) {
 
-                width: 12rem;
-                height: 12rem;
+                width: 14rem;
+                height: 14rem;
             }
         }
     }
