@@ -13,41 +13,45 @@ const Home = () => {
     return (
         <main className="mainHome">
             <div className="card-container">
-                <Link to="/blog" className="navLink">
-                    <Tilt options={options}>
-                        <div className="card">
-                            <h3>Le Blog</h3>
-                            <i class="fas fa-pen-alt fa-5x"></i>
-                        </div>
-                    </Tilt>
-                </Link>
+                <div className="row1">
+                    <Link to="/blog" className="navLink">
+                        <Tilt options={options}>
+                            <div className="card">
+                                <h3>Le Blog</h3>
+                                <i class="fas fa-pen-alt fa-5x"></i>
+                            </div>
+                        </Tilt>
+                    </Link>
 
-                <Link to="/marche" className="navLink">
-                    <Tilt options={options}>
-                        <div className="card">
-                            <h3>Le marché</h3>
-                            <i class="fas fa-shopping-cart fa-5x"></i>
-                        </div>
-                    </Tilt>
-                </Link>
+                    <Link to="/marche" className="navLink">
+                        <Tilt options={options}>
+                            <div className="card">
+                                <h3>Le marché</h3>
+                                <i class="fas fa-shopping-cart fa-5x"></i>
+                            </div>
+                        </Tilt>
+                    </Link>
+                </div>
 
-                <Link to="/Jardinier" className="navLink">
-                    <Tilt options={options}>
-                        <div className="card">
-                            <h3>Esapace Jardinier</h3>
-                            <i class="fas fa-user fa-5x"></i>
-                        </div>
-                    </Tilt>
-                </Link>
+                <div className="row2">
+                    <Link to="/Jardinier" className="navLink">
+                        <Tilt options={options}>
+                            <div className="card">
+                                <h3>Esapace Jardinier</h3>
+                                <i class="fas fa-user fa-5x"></i>
+                            </div>
+                        </Tilt>
+                    </Link>
 
-                <Link to="/contact" className="navLink">
-                    <Tilt options={options}>
-                        <div className="card">
-                            <h3>Contact</h3>
-                            <i class="fas fa-file-signature fa-5x"></i>
-                        </div>
-                    </Tilt>
-                </Link>
+                    <Link to="/contact" className="navLink">
+                        <Tilt options={options}>
+                            <div className="card">
+                                <h3>Contact</h3>
+                                <i class="fas fa-file-signature fa-5x"></i>
+                            </div>
+                        </Tilt>
+                    </Link>
+                </div>
             </div>
         </main>
     );
