@@ -19,38 +19,44 @@
     .card-container{
 
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: row;
+        justify-content: space-evenly;
         flex-wrap: wrap;
+        width: 90%;
 
         .navLink{
             text-decoration: none;
+            color: black;
         }
 
         .card{
 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
             background: rgba($c-p, 0.1);
             border-radius: 0.6rem;
-            width: 15rem;
-            height: 15rem;
-            margin: 1rem;
+            width: 12rem;
+            height: 12rem;
+            margin: 0rem;
             z-index: 3;
         
-            box-shadow: 2rem 2rem 5rem rgba(255, 255, 255, 0.5);
-            background-color: rgba(0, 0, 0, 0.1);
+            box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);
             overflow: hidden;
         
             // display: flex;
             // justify-content: center;
             // align-items: center;
         
-            border-top: 1px solid rgba(0, 0, 0, 0.5);
-            border-left: 1px solid rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(248, 248, 248, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
 
-
             &:hover{
-                transform: scaleZ(1.1);
+                overflow: hidden;
             }
         
         }
