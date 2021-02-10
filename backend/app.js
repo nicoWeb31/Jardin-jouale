@@ -2,14 +2,20 @@ import express from 'express';
 import path from 'path';
 const app = express();
 
+//import route
+import authRoute from './routes/authRoute.js'
 
-// import morgan from 'morgan';
-// if(process.env.NODE_ENV !== 'production') {
-//     app.use(morgan('dev'));
-//     console.log('morgan work in dev mode !')
-// }
 
-//for production
+
+
+//_______________________route__________________________________
+app.use('/api/v1/',authRoute);
+
+
+
+
+//_______________________for rendering production_________________________________________
+
 const __dirname = path.resolve();
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/client/build')));
@@ -21,6 +27,9 @@ if(process.env.NODE_ENV === 'production') {
         res.send('API is running!!!')
     })
 }
+
+
+
 
 
 
