@@ -10,6 +10,7 @@ const createToken = (user) => {
     });
 };
 
+//_______________________signup___________________________________________________________
 export const singnup = catchAsync(async (req, res, next) => {
     // const newUser = await User.create(req.body);
     const newUser = await User.create({
@@ -33,6 +34,7 @@ export const singnup = catchAsync(async (req, res, next) => {
     });
 });
 
+//__________________________login_________________________________________________
 export const login = catchAsync(async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -55,7 +57,7 @@ export const login = catchAsync(async (req, res, next) => {
     });
 });
 
-//test
+//____________________________protect route______________________________________________
 export const protect = catchAsync(async (req, res, next) => {
     let token;
 
@@ -100,3 +102,15 @@ export const protect = catchAsync(async (req, res, next) => {
     req.user = curentUser;
     next()
 });
+
+
+//after protect midlleware, check if route is allowed to the user role 
+//____________________________role auth__________________________________________________
+export const restrictTo =  (...roles) => catchAsync(async(req, res, next) =>{
+
+    if(!roles.includes(req.user.role)){
+        next(new AppError('You do not have permission to perform this action',403));
+    }
+
+    next();
+})
