@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.post('/singnup', singnup);
-router.post('/login', protect,login);
+router.post('/login',login);
 
 
 

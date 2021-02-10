@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './home.style.scss';
 import Tilt from '../../components/VanillaTilt';
+import logo from '../../img/home/logo.png'
 
 const Home = () => {
     const options = {
         speed: 200,
         max: 15,
-        glare: true,
+
     };
 
     return (
         <main className="mainHome">
+            <img src={logo} alt="" className="logo"/>
             <div className="card-container">
                 <div className="row1">
                     <Link to="/blog" className="navLink">
