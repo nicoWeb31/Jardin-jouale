@@ -19,6 +19,7 @@ const userShema = new mongoose.Schema({
         type: String,
         require: [true, 'Please provide a password'],
         minlength: 8,
+        select:false
     },
 });
 
@@ -29,6 +30,13 @@ userShema.pre('save', async function (next) {
 
     next();
 });
+
+userShema.methods.correctPassword = function (candiatePassword, userPassword) {
+
+    const result = bcrypt.compare(candiatePassword,userPassword);
+    return result;
+}
+
 
 const User = mongoose.model('User', userShema);
 

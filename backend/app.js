@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
 const app = express();
+import ErrMidlware from './controllers/errorController.js'
 
 //import route
 import authRoute from './routes/authRoute.js';
@@ -33,6 +34,11 @@ if(process.env.NODE_ENV === 'production') {
         res.send('API is running!!!')
     })
 }
+
+
+//_______________________error midlleware__________________________________
+//err midlleware
+app.use(ErrMidlware);
 
 
 
