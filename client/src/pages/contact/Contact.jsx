@@ -3,7 +3,7 @@ import './contact.style.scss';
 
 const Contact = () => {
     return (
-        <div>
+        <div className="blockContact">
             contact
         </div>
     )

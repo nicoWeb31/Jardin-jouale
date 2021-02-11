@@ -2,7 +2,7 @@ import React from 'react';
 import './jardin.style.scss';
 const Jardin = () => {
     return (
-        <div>
+        <div className="blockJardin">
             Jardin
         </div>
     )

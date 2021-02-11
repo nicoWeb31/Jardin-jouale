@@ -3,7 +3,7 @@ import './marche.style.scss';
 
 const Marche = () => {
     return (
-        <div>
+        <div className="blockMarche">
             marche
         </div>
     )
