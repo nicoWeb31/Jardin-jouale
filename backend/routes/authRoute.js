@@ -8,7 +8,7 @@ router.post('/singnup', singnup);
 router.post('/login',login);
 
 router.post('/forgotPassword',forgotPassword);
-router.post('/resetPassword',resetPassword);
+router.patch('/resetPassword/:token',resetPassword);
 
 
 

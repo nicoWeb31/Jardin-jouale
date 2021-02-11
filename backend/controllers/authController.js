@@ -3,6 +3,7 @@ import User from '../models/userModel.js';
 import { catchAsync } from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 import { promisify } from 'util';
+import sendEmail from './mailer.js';
 
 const createToken = (user) => {
     return jwt.sign({ id: user._id }, process.env.JWT_SERCRET, {
@@ -100,48 +101,69 @@ export const protect = catchAsync(async (req, res, next) => {
 
     //Grant access to protect route!!!
     req.user = curentUser;
-    next()
+    next();
 });
 
-
-//after protect midlleware, check if route is allowed to the user role 
+//after protect midlleware, check if route is allowed to the user role
 //____________________________role auth__________________________________________________
-export const restrictTo =  (...roles) => catchAsync(async(req, res, next) =>{
+export const restrictTo = (...roles) =>
+    catchAsync(async (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            next(
+                new AppError(
+                    'You do not have permission to perform this action',
+                    403
+                )
+            );
+        }
 
-    if(!roles.includes(req.user.role)){
-        next(new AppError('You do not have permission to perform this action',403));
-    }
+        next();
+    });
 
-    next();
-})
-
-//forgotPassword 
-export const forgotPassword = catchAsync(async(req, res, next) => {
-
+//forgotPassword
+export const forgotPassword = catchAsync(async (req, res, next) => {
     //find user based on posted email
-    const user = await User.findByOne({ email: req.body.email })
+    const user = await User.findOne({ email: req.body.email });
 
-    if(!user) {
-        return next(new AppError('There is no user with email adress', 404))
+    if (!user) {
+        return next(new AppError('There is no user with email adress', 404));
     }
 
     //generte a token
 
     const resetToken = user.createPasswordResetToken();
 
-    await user.save({ValidityState: false});
-
-
+    await user.save({ ValidityState: false });
 
     //send it to user's email
 
+    const resetURL = `${req.protocol}://${req.get(
+        'host'
+    )}/api/v1/auth/resetPassword/${resetToken}`;
 
-})
+    const message = `forgot your password ? Submit request with your new password and passwordConfirm to :${resetURL}.\n
+    if you didn't forget your password ignore this email !!
+    `;
 
+    try {
+        await sendEmail({
+            email: user.email,
+            subject: 'Your password reset token (valid for 10m)',
+            message,
+        });
 
+        res.status(200).json({
+            status: 'success',
+            message: 'Token sent to your email',
+        });
+    } catch (error) {
+        user.passwordResetToken = undefined;
+        user.passwordResetExpires = undefined;
+        await user.save({ ValidityState: false });
 
+        return next(new AppError('there was an error sending the email, try later',500))
+    }
+});
 
 //rest password
-export const resetPassword = catchAsync(async (req, res, next) => {
-
-})
+export const resetPassword = catchAsync(async (req, res, next) => {});
