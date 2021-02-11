@@ -67,6 +67,7 @@ userShema.methods.createPasswordResetToken = function () {
         .createHash('sha256')
         .update(resetToken)
         .digest('hex');
+    console.log("🚀 ~ file: userModel.js ~ line 70 ~ this.passwordResetToken", this.passwordResetToken)
 
     this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
