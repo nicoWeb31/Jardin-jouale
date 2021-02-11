@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 
 const userShema = new mongoose.Schema({
     name: {
@@ -15,9 +16,9 @@ const userShema = new mongoose.Schema({
         validate: [validator.isEmail, 'Please provide a valide email'],
     },
     photo: String,
-    role:{
+    role: {
         type: String,
-        enum:['user','admin'],
+        enum: ['user', 'admin'],
         default: 'user',
     },
     password: {
@@ -27,6 +28,8 @@ const userShema = new mongoose.Schema({
         select: false,
     },
     passwordChangeAt: Date,
+    passwordResetToken: String,
+    passwordResetExpires: Date,
 });
 
 userShema.pre('save', async function (next) {
@@ -54,6 +57,20 @@ userShema.methods.changePasswordAfter = function (JWTTimstamp) {
     }
 
     return false;
+};
+
+//create token for reset password
+userShema.methods.createPasswordResetToken = function () {
+    const resetToken = crypto.randomBytes(32).toString('hex');
+
+    this.passwordResetToken = crypto
+        .createHash('sha256')
+        .update(resetToken)
+        .digest('hex');
+
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+
+    return resetToken;
 };
 
 const User = mongoose.model('User', userShema);
