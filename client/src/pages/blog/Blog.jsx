@@ -3,7 +3,7 @@ import './blog.style.scss';
 
 const Blog = () => {
     return (
-        <div class="BlockBlog">
+        <div className="BlockBlog">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Consequuntur deleniti animi quia quis dolore magni sint, laudantium
             explicabo recusandae quisquam quo eius ad asperiores ullam quasi

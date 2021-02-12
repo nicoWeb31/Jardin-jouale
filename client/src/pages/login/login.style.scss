@@ -6,6 +6,8 @@
     padding-top: 20rem;
     display: flex;
     justify-content:center;
+    flex-direction:column;
+    align-items:center;
 
 
     .loginBlock {
@@ -88,4 +90,10 @@
     outline: none;
     box-shadow: 0 1rem 2rem rgba($c-b, 0.1);
     border-bottom: 3px solid $c-success;
+}
+
+.errorMess {
+    padding-top: 0.5rem;
+    font-size: 1.3rem;
+    color: rgb(133, 45, 45);
 }
