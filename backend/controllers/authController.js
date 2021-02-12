@@ -52,9 +52,11 @@ export const login = catchAsync(async (req, res, next) => {
     }
 
     const token = createToken(user);
+    //TODO: REMOVE USER PASSWORD
 
     res.status(200).json({
         status: 'success',
+        user,
         token,
     });
 });
