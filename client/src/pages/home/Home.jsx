@@ -36,7 +36,7 @@ const Home = () => {
                 </div>
 
                 <div className="row2">
-                    <Link to="/Jardinier" className="navLink">
+                    <Link to="/jardinier" className="navLink">
                         <Tilt options={options}>
                             <div className="card">
                                 <h3>Esapace Jardinier</h3>

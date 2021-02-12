@@ -1,3 +1,65 @@
-.blockContact{
+@import '../../variable';
+
+.blockJardin {
     padding-top: 20rem;
+
+    h1{
+        margin: 3rem;
+        font-weight:700;
+        text-transform: uppercase;
+    }
+
+    .gridContainer {
+        padding-top: 10rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 0px 0px;
+    }
+
+    .sidbar {
+        background: rgba($c-b,.3);
+        border: solid 2px black;
+        height: 100vh;
+        grid-row: 0/1;
+        grid-column: 0/-1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .itemSideBar{
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $c-b;
+            font-weight: 700;
+            font-size: 2rem;
+            border: solid 2px $c-b;
+            margin: 1rem;
+            border-radius: 3px;
+            background:$c-s;
+            transition: all 0.1s;
+
+            &:hover{
+                transform: scale(1.05);
+            background:$c-b;
+            border: solid 2px $c-s;
+            color:$c-s
+
+
+            }
+
+        }
+
+
+
+    }
+
+    .contentAdmin {
+        background: rgba(123, 192, 75,.3);
+        border: solid 2px black;
+        height: 100vh;
+        grid-row: 1/-1;
+        grid-column: 2/-1;
+    }
 }
