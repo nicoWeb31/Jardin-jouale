@@ -1,5 +1,6 @@
 import React from 'react';
 import ButtonP from '../button/ButtonP';
+import { Link } from 'react-router-dom';
 import './navBar.style.scss';
 
 const NavBar = () => {
@@ -12,8 +13,13 @@ const NavBar = () => {
 
             <div className="nav-links">
                 <ButtonP>
-                    <button>Connexion</button>
-                    <button>Inscription</button>
+                    <Link to="/login">
+                        <button>Connexion</button>
+                    </Link>
+
+                    <Link to='/register'>
+                        <button>Inscription</button>
+                    </Link>
                 </ButtonP>
             </div>
         </nav>

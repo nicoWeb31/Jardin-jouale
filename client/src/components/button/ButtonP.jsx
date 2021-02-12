@@ -3,7 +3,7 @@ import './button.style.scss';
 
 const ButtonP = ({children}) => {
     return (
-        <div className="nav-links">
+        <div className="btn-content">
             {children}
         </div>
     )
