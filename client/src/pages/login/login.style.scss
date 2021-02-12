@@ -1,91 +1,91 @@
 @import '../../variable';
 
-.btn {
-    display: inline-block;
-    padding: 1rem 3rem 1rem;
-    margin-bottom: 0;
-    font-size: 3rem;
-    line-height: 2rem;
-    color: $c-c;
-    text-align: center;
 
-    border: 1px solid $c-b;
+.loginPage {
 
-    cursor: pointer;
-}
-
-
-.btn:hover {
-    color: #333333;
-    text-decoration: none;
-    background-color: #e6e6e6;
-}
-
-.btn-block {
-    width: 100%;
-    display: block;
-}
-
-
-
-.loginBlock {
-    background: $c-s;
-    border-radius: 10%;
-    border : solid 2px $c-t;
-
+    padding-top: 20rem;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    position: absolute;
-    flex-direction: column;
+    justify-content:center;
 
-    padding: 4rem;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 
-    width: 30%;
-    height: 50%;
+    .loginBlock {
+        background: $c-s;
+        border-radius: 10%;
+        border: solid 2px $c-t;
 
-    h1 {
-        font-size: 4rem;
-        color: $c-b;
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        letter-spacing: 1px;
-        text-align: center;
+        padding: 4rem;
+
+        width: 30%;
+        height: 50%;
+
+        h1 {
+            font-size: 3rem;
+            padding-bottom: 2rem;
+            color: $c-b;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            text-align: center;
+        }
     }
-    input {
-        width: 100%;
-        margin-bottom: 10px;
-        background: $c-w;
+}
+
+.form {
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        font-size: 1.5rem;
+        font-family: inherit;
+        color: inherit;
+        padding: 1.3rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($c-w, 0.8);
         border: none;
-        outline: none;
-        padding: 1rem;
+        border-bottom: 3px solid transparent;
+        width: 90%;
+        display: block;
 
-        font-size: 13px;
-        color:$c-b;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(0, 0, 0, 0.3);
-        border-radius: 4px;
-        box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2),
-            0 1px 1px rgba(255, 255, 255, 0.2);
-        -webkit-transition: box-shadow 0.5s ease;
-        -moz-transition: box-shadow 0.5s ease;
-        -o-transition: box-shadow 0.5s ease;
-        -ms-transition: box-shadow 0.5s ease;
-        transition: box-shadow 0.5s ease;
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($c-b, 0.1);
+            border-bottom: 3px solid $c-b;
+        }
     }
-    input:focus {
-        box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4),
-            0 1px 1px rgba(255, 255, 255, 0.2);
+    &__label {
+        font-style: 1.3rem;
+        font-weight: 500;
+        margin-left: 0rem;
+        margin-top: 0.7rem;
+        display: block;
+        transition: all 0.4s;
+    }
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
     }
 
-    .form{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: column;
+    .loginBtn{
+        padding-top: 2rem;
 
+        height: 3rem;
+        width: 50%;
     }
+}
+
+.inpuTError {
+    background-color: $c-danger-l;
+    transition: all 0.5;
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($c-b, 0.1);
+    border-bottom: 3px solid $c-danger;
+}
+
+.inputOK {
+    background-color: $c-success-l;
+    transition: all 0.5;
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($c-b, 0.1);
+    border-bottom: 3px solid $c-success;
 }

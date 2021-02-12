@@ -1,10 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { reducer as reduxForm } from 'redux-form';
+
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { userLoginReducer } from './reducers/authReducers';
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
+    form: reduxForm
 });
 
 //from storage
