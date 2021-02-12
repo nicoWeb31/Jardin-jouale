@@ -1,9 +1,11 @@
 import React,{useEffect} from 'react';
 import ButtonP from '../../components/button/ButtonP';
+import '../../form.style.scss';
 import './login.style.scss';
 import { useDispatch,useSelector } from 'react-redux';
 import { login } from '../../redux/actions/authActions';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom'
 
 //_________________________________render input______________________________________
 
@@ -57,6 +59,7 @@ const Login = ({history,handleSubmit}) => {
     //____________________________function____________________________________________________
     
     const onHandleSubmit = () => {
+
         dispatch(login(valuesForm));
     };
 
@@ -92,6 +95,9 @@ const Login = ({history,handleSubmit}) => {
                             placeholder="votre password !"
                         />
                         <hr />
+                        <small>vous n'avez pas de compte : 
+                            <Link to='/register'>créer compte</Link>
+                        </small>
                         <ButtonP>
                             <button type="submit" className="loginBtn" disabled={valuesForm && !valuesForm.email && !valuesForm.password} >
                                 <i className="fas fa-arrow-right"></i>

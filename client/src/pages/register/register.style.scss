@@ -1,0 +1,32 @@
+@import '../../variable';
+
+
+.registerPage {
+
+    padding-top: 20rem;
+    display: flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+
+
+    .formBlock {
+        background: $c-s;
+        border-radius: 10%;
+        border: solid 2px $c-t;
+
+        padding: 4rem;
+
+        width: 30%;
+        height: 50%;
+
+        h1 {
+            font-size: 3rem;
+            padding-bottom: 2rem;
+            color: $c-b;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+    }
+}
