@@ -8,6 +8,7 @@ import Marche from './pages/marche/Marche';
 import Jardin from './pages/jardin/Jardin';
 import Blog from './pages/blog/Blog';
 import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 
 function App() {
     return (
@@ -23,6 +24,8 @@ function App() {
                     <Route path="/blog" component={Blog} />
                     <Route path="/jardin" component={Jardin} />
                     <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
+
 
                 </main>
             </div>

@@ -14,13 +14,19 @@ const Register = () => {
 
     return (
         <div class="loginBlock">
-            <h1>Connexion </h1>
+            <h1>Nous Rejoindre !</h1>
             <form onSubmit={onHandleSubmit}>
+                
                 <input type="text" />
 
                 <input type="password" />
+
+                <input type="password" />
+
+
+
                 <ButtonP>
-                    <button type="submit">Connexion</button>
+                    <button type="submit">Inscription</button>
                 </ButtonP>
             </form>
         </div>
