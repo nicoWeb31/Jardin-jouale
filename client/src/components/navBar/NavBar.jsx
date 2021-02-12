@@ -1,6 +1,6 @@
 import React from 'react';
+import ButtonP from '../button/ButtonP';
 import './navBar.style.scss';
-
 
 const NavBar = () => {
     return (
@@ -11,15 +11,10 @@ const NavBar = () => {
             </div>
 
             <div className="nav-links">
-                <a href="//github.io/jo_geek" target="_blank">
-                    Connexion
-                </a>
-                <a
-                    href="http://stackoverflow.com/users/4084003/"
-                    target="_blank"
-                >
-                    Inscription
-                </a>
+                <ButtonP>
+                    <button>Connexion</button>
+                    <button>Inscription</button>
+                </ButtonP>
             </div>
         </nav>
     );

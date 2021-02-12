@@ -7,6 +7,7 @@ import Contact from './pages/contact/Contact';
 import Marche from './pages/marche/Marche';
 import Jardin from './pages/jardin/Jardin';
 import Blog from './pages/blog/Blog';
+import Login from './pages/login/Login';
 
 function App() {
     return (
@@ -21,6 +22,8 @@ function App() {
                     <Route path="/marche" component={Marche} />
                     <Route path="/blog" component={Blog} />
                     <Route path="/jardin" component={Jardin} />
+                    <Route path="/login" component={Login} />
+
                 </main>
             </div>
         </BrowserRouter>
