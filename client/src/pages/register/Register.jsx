@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { register } from '../../redux/actions/authActions';
 import { Link } from 'react-router-dom';
+import {toast} from 'react-toastify'
 import '../../form.style.scss';
 import './register.style.scss';
 
@@ -46,9 +47,14 @@ const Register = ({ history, handleSubmit }) => {
 
     useEffect(() => {
         if (userInfo) {
+            toast.success(`nous somme heureux de te compter parmit nous ${userInfo.name}`);
             history.push('/');
         }
-    }, [history, userInfo]);
+
+        if(error) {
+            toast.error(error)
+        }
+    }, [history, userInfo,error]);
 
     //_________________________________________function________________________________
     const onHandleSubmit = () => {
