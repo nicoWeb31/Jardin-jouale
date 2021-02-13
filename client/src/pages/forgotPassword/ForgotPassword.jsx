@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import ButtonP from '../../components/button/ButtonP';
 import '../../form.style.scss';
-import './login.style.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../redux/actions/authActions';
-import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router-dom';
+import { forgotPass } from '../../redux/actions/authActions';
+
+
 
 //_________________________________render input______________________________________
 
@@ -37,25 +37,20 @@ const renderInput = (formProps) => {
     );
 };
 
-const Login = ({ history, handleSubmit }) => {
+const ForgotPassword = ({ history, handleSubmit }) => {
     const dispatch = useDispatch();
     const {
-        loginForm: { values: valuesForm },
+        forgotPassForm: { values: valuesForm },
     } = useSelector((state) => state.form);
-    const { loading, error, userInfo } = useSelector(
-        (state) => state.userLogin
-    );
 
-    useEffect(() => {
-        if (userInfo) {
-            history.push('/');
-        }
-    }, [history, userInfo]);
+    const {error,loading} = useSelector((state) => state.forgotPassword);
+
 
     //____________________________function____________________________________________________
 
     const onHandleSubmit = () => {
-        dispatch(login(valuesForm));
+        dispatch(forgotPass(valuesForm));
+        history.push('/login')
     };
 
     return (
@@ -68,7 +63,7 @@ const Login = ({ history, handleSubmit }) => {
             <div>{loading && <h3>loading......</h3>}</div>
 
             <div class="loginBlock">
-                <h1>Connexion </h1>
+                <h1>Mot de passe oublier</h1>
                 <div className="formulaire__form">
                     <form
                         onSubmit={handleSubmit(onHandleSubmit)}
@@ -81,34 +76,18 @@ const Login = ({ history, handleSubmit }) => {
                             placeholder="votre email !"
                         />
 
-                        <Field
-                            name="password"
-                            type="password"
-                            component={renderInput}
-                            label="Password"
-                            placeholder="votre password !"
-                        />
                         <hr />
-                        <div className="reset">
-                            <small>
-                                Vous n'avez pas de compte :
-                                <Link to="/register" className="navLink">créer compte</Link>
-                            </small>
-                            <small>
-                                Vous n'avez pas de compte :
-                                <Link to="/forgotPassword" className="navLink">
-                                    Mot de passe oublié ?
-                                </Link>
-                            </small>
-                        </div>
+                        <p>
+                            Vous allez recevoir un mail de recuperation de mots de passe!, cliquer sur le lien et suivre les instructions.
+                        </p>
                         <ButtonP>
                             <button
                                 type="submit"
                                 className="loginBtn"
                                 disabled={
                                     valuesForm &&
-                                    !valuesForm.email &&
-                                    !valuesForm.password
+                                    !valuesForm.email
+
                                 }
                             >
                                 <i className="fas fa-arrow-right"></i>
@@ -133,15 +112,11 @@ const validate = (formValues) => {
         errors.email = 'votre adresse email a un problème !';
     }
     if (!formValues.email) {
-        //only ran if user did not enter a name
-        errors.email = 'vous devez entrer votre mail !';
-    }
 
-    if (!formValues.password) {
-        errors.password = 'vous devez entrer votre mail !';
+        errors.email = 'vous devez entrer votre mail !';
     }
 
     return errors;
 };
 
-export default reduxForm({ form: 'loginForm', validate })(Login);
+export default reduxForm({ form: 'forgotPassForm', validate })(ForgotPassword);

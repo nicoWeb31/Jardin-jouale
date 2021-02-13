@@ -3,18 +3,19 @@
 
 .registerPage {
 
-    padding-top: 20rem;
+    padding-top: 15rem;
     display: flex;
     justify-content:center;
     flex-direction:column;
     align-items:center;
+    padding-bottom: 3rem;
 
 
     .formBlock {
         background: $c-s;
         border-radius: 10%;
         border: solid 2px $c-t;
-
+        margin-bottom: 2rem;
         padding: 4rem;
 
         width: 30%;

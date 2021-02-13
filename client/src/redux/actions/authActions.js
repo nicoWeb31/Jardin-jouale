@@ -6,6 +6,9 @@ import {
     USER_REGISTER_REQUEST,
     USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
+    USER_FORGOTPASS_FAIL,
+    USER_FORGOTPASS_SUCCESS,
+    USER_FORGOTPASS_REQUEST
 } from '../types/authTypes';
 
 import axios from 'axios';
@@ -67,3 +70,30 @@ export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
     dispatch({ type: USER_LOGOUT });
 };
+
+
+export const forgotPass = (email)=> async(dispatch) =>{
+    try {
+        dispatch({ type: USER_FORGOTPASS_REQUEST });
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+            },
+        };
+        const { data } = await axios.post(
+            `/api/v1/auth/login`,
+            { email },
+            config
+        );
+        dispatch({ type: USER_FORGOTPASS_SUCCESS });
+
+    } catch (error) {
+        dispatch({
+            type: USER_FORGOTPASS_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+    }
+}

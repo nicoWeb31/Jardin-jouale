@@ -9,6 +9,7 @@ import Jardin from './pages/jardin/Jardin';
 import Blog from './pages/blog/Blog';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 
 function App() {
     return (
@@ -26,6 +27,8 @@ function App() {
                         <Route path="/jardinier" component={Jardin} />
                         <Route path="/login" component={Login} />
                         <Route path="/register" component={Register} />
+                        <Route path="/forgotPassword" component={ForgotPassword} />
+
                     </Switch>
                 </main>
             </div>
