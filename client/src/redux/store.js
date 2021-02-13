@@ -3,11 +3,12 @@ import thunk from 'redux-thunk';
 import { reducer as reduxForm } from 'redux-form';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { userLoginReducer,userRegisterReducer } from './reducers/authReducers';
+import { userLoginReducer,userRegisterReducer,forgotPasswordReducer } from './reducers/authReducers';
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
+    forgotPassword: forgotPasswordReducer,
     form: reduxForm
 });
 

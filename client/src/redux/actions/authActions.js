@@ -80,8 +80,8 @@ export const forgotPass = (email)=> async(dispatch) =>{
                 'Content-type': 'application/json',
             },
         };
-        const { data } = await axios.post(
-            `/api/v1/auth/login`,
+        await axios.post(
+            `/api/v1/auth/forgotPassword`,
             { email },
             config
         );

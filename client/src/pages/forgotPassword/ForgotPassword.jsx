@@ -43,14 +43,23 @@ const ForgotPassword = ({ history, handleSubmit }) => {
         forgotPassForm: { values: valuesForm },
     } = useSelector((state) => state.form);
 
-    const {error,loading} = useSelector((state) => state.forgotPassword);
+    const {error,loading,success} = useSelector((state) => state.forgotPassword);
+
+    React.useEffect(()=>{
+
+        if(success) {
+            history.push('/login')
+
+        }
+
+    },[success,history]);
 
 
     //____________________________function____________________________________________________
 
     const onHandleSubmit = () => {
-        dispatch(forgotPass(valuesForm));
-        history.push('/login')
+        dispatch(forgotPass(valuesForm.email));
+        console.log("🚀 ~ file: ForgotPassword.jsx ~ line 62 ~ onHandleSubmit ~ valuesForm", valuesForm)
     };
 
     return (
@@ -91,7 +100,7 @@ const ForgotPassword = ({ history, handleSubmit }) => {
                                 }
                             >
                                 <i className="fas fa-arrow-right"></i>
-                                Connexion
+                                Envoyer
                             </button>
                         </ButtonP>
                     </form>
