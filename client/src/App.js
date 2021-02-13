@@ -10,6 +10,9 @@ import Blog from './pages/blog/Blog';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
     return (
@@ -31,6 +34,7 @@ function App() {
 
                     </Switch>
                 </main>
+                <ToastContainer/>
             </div>
         </BrowserRouter>
     );

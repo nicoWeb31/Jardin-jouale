@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/actions/authActions';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 //_________________________________render input______________________________________
 
@@ -48,9 +49,14 @@ const Login = ({ history, handleSubmit }) => {
 
     useEffect(() => {
         if (userInfo) {
+            toast.success(`Bienvenue ${userInfo.name}`);
             history.push('/');
         }
-    }, [history, userInfo]);
+
+        if (error) {
+            toast.error(error);
+        }
+    }, [history, userInfo,error]);
 
     //____________________________function____________________________________________________
 
@@ -92,7 +98,9 @@ const Login = ({ history, handleSubmit }) => {
                         <div className="reset">
                             <small>
                                 Vous n'avez pas de compte :
-                                <Link to="/register" className="navLink">créer compte</Link>
+                                <Link to="/register" className="navLink">
+                                    créer compte
+                                </Link>
                             </small>
                             <small>
                                 Vous n'avez pas de compte :

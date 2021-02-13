@@ -1,11 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, formValues, reduxForm,reset } from 'redux-form';
 import ButtonP from '../../components/button/ButtonP';
 import '../../form.style.scss';
 import { forgotPass } from '../../redux/actions/authActions';
-
-
+import { toast } from 'react-toastify';
 
 //_________________________________render input______________________________________
 
@@ -43,31 +42,28 @@ const ForgotPassword = ({ history, handleSubmit }) => {
         forgotPassForm: { values: valuesForm },
     } = useSelector((state) => state.form);
 
-    const {error,loading,success} = useSelector((state) => state.forgotPassword);
+    const { error, loading, success } = useSelector(
+        (state) => state.forgotPassword
+    );
 
-    React.useEffect(()=>{
-
-        if(success) {
-            history.push('/login')
-
+    React.useEffect(() => {
+        if (success && valuesForm) {
+            toast.success(`un mail a été envoyer a ${valuesForm.email}`);
+            history.push('/login');
+        }else{
+            toast.error(error);
         }
-
-    },[success,history]);
-
-
+    }, [success, history,error]);
+    
     //____________________________function____________________________________________________
-
+    
     const onHandleSubmit = () => {
         dispatch(forgotPass(valuesForm.email));
-        console.log("🚀 ~ file: ForgotPassword.jsx ~ line 62 ~ onHandleSubmit ~ valuesForm", valuesForm)
     };
 
     return (
         <div className="loginPage">
-            <div>
-                {/* error from server TODO:*/}
-                {error && <h3>{error}</h3>}
-            </div>
+
 
             <div>{loading && <h3>loading......</h3>}</div>
 
@@ -87,17 +83,15 @@ const ForgotPassword = ({ history, handleSubmit }) => {
 
                         <hr />
                         <p>
-                            Vous allez recevoir un mail de recuperation de mots de passe!, cliquer sur le lien et suivre les instructions.
+                            Vous allez recevoir un mail de recuperation de mots
+                            de passe!, cliquer sur le lien et suivre les
+                            instructions.
                         </p>
                         <ButtonP>
                             <button
                                 type="submit"
                                 className="loginBtn"
-                                disabled={
-                                    valuesForm &&
-                                    !valuesForm.email
-
-                                }
+                                disabled={valuesForm && !valuesForm.email}
                             >
                                 <i className="fas fa-arrow-right"></i>
                                 Envoyer
@@ -121,7 +115,6 @@ const validate = (formValues) => {
         errors.email = 'votre adresse email a un problème !';
     }
     if (!formValues.email) {
-
         errors.email = 'vous devez entrer votre mail !';
     }
 
