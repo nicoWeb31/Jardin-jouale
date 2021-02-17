@@ -1,0 +1,60 @@
+@import '../../../variable.scss';
+
+.containerAdminSeed {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+table tr:nth-child(odd) {
+    background-color: red;
+}
+.responstable {
+    padding: 1rem;
+    margin-top: 2rem;
+    width: 95%;
+    overflow: hidden;
+    background: $c-p;
+    color: $c-b;
+    font-size: 1.4rem;
+    border-radius: 3px;
+    border: 1px solid black;
+
+    th {
+        background: rgba($c-b, 0.3);
+        border-top: 1px solid black;
+    }
+    td {
+        border-top: 1px solid black;
+    }
+
+    tr {
+        &:nth-child(odd) {
+            background: rgba($c-w,.5);
+        }
+    }
+}
+
+.addBtn {
+    color: $c-w;
+}
+
+.btnContent {
+    .btnEdit {
+        color: $c-success;
+        padding: 5px;
+
+        &:hover {
+            color: $c-s;
+        }
+    }
+
+    .btnTrash {
+        color: $c-danger;
+        padding: 5px;
+
+        &:hover {
+            color: $c-d;
+        }
+    }
+}
