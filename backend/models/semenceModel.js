@@ -3,12 +3,13 @@ import mongoose from 'mongoose';
 const semenceSchema = new mongoose.Schema({
     legume:{
         type: String,
-        require: [true, "Legume obligatoire "]
+        required: [true, "Legume obligatoire "]
     },
     cultivar: {
         type:String,
-        require: [true, "cultivar obligatoire"],
-        unique:[ true, 'le cultivar existe deja !']
+        required: [true, "cultivar obligatoire"],
+        unique:[ true, 'le cultivar existe deja !'],
+        indexes:true
     },
     startSemis:{
         type:Date
@@ -18,7 +19,7 @@ const semenceSchema = new mongoose.Schema({
     },
     quantity:{
         type:Number,
-        require:[true,'quantités obligatoire']
+        required:[true,'quantités obligatoire']
     },
     comment:{
         type:String,
