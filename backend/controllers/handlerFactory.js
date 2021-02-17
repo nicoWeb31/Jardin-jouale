@@ -5,7 +5,7 @@ import apiF from '../utils/apiFeature.js'
 //GENERALIZATION DES METHODE
 
 //DELETE
-exports.deleteOne = Model => catchAsync(async (req, res, next) => {
+export const deleteOne = Model => catchAsync(async (req, res, next) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
 
     if (!doc) {
@@ -19,7 +19,7 @@ exports.deleteOne = Model => catchAsync(async (req, res, next) => {
 });
 
 //PATCH
-exports.updateOne = Model =>catchAsync(async (req, res, next) => {
+export const updateOne = Model =>catchAsync(async (req, res, next) => {
     const document = await Model.findByIdAndUpdate(req.params.id, req.body, {
         new: true, //return the new document
         runValidators: true, //doit utiliser notre shema
@@ -40,7 +40,7 @@ exports.updateOne = Model =>catchAsync(async (req, res, next) => {
 
 
 //CREATE ONE DOCUMENT
-exports.createNewDoc = Model => catchAsync(async (req, res, next) => {
+export const createNewDoc = Model => catchAsync(async (req, res, next) => {
 
     const newDoc = await Model.create(req.body);
 
@@ -54,7 +54,7 @@ exports.createNewDoc = Model => catchAsync(async (req, res, next) => {
 
 //GET ONE document
 
-exports.getOne = (Model, popOptions)=>catchAsync(async (req, res, next) => {
+export const getOne = (Model, popOptions)=>catchAsync(async (req, res, next) => {
 
     let query = Model.findById(req.params.id);
 
@@ -76,7 +76,7 @@ exports.getOne = (Model, popOptions)=>catchAsync(async (req, res, next) => {
 });
 
 //GET ALL document
-exports.getAll = Model =>catchAsync(async (req, res, next) => {
+export const getAll = Model =>catchAsync(async (req, res, next) => {
 
     //to allow for nested get reviews on tour
     let filter = {};
