@@ -6,6 +6,7 @@ import ErrMidlware from './controllers/errorController.js'
 
 //import route
 import authRoute from './routes/authRoute.js';
+import totoSeedRoute from './routes/seedRoute.js';
 
 
 //middleware
@@ -17,6 +18,7 @@ app.use(morgan('dev'))
 
 //_______________________route__________________________________
 app.use('/api/v1/auth',authRoute);
+app.use('/api/v1/seed',totoSeedRoute)
 
 
 

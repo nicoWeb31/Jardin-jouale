@@ -1,6 +1,6 @@
-import catchAsync from '../utils/catchAsync.js'
+import {catchAsync} from '../utils/catchAsync.js'
 import AppErr from '../utils/appError.js'
-import apiF from '../utils/apiFeature.js'
+// import apiF from '../utils/apiFeature.js'
 
 //GENERALIZATION DES METHODE
 
@@ -75,22 +75,11 @@ export const getOne = (Model, popOptions)=>catchAsync(async (req, res, next) => 
     });
 });
 
+
 //GET ALL document
-export const getAll = Model =>catchAsync(async (req, res, next) => {
+export const getAll = Model => catchAsync(async (req, res, next) => {
 
-    //to allow for nested get reviews on tour
-    let filter = {};
-    if (req.params.tourId) filter = { tour: req.params.tourId };
-
-    //EXECTUT QUERY
-    const features = new APIFeature(Model.find(filter), req.query)
-        .filter()
-        .sorting()
-        .limitFields()
-        .paginate();
-    //const doc = await features.query.explain();
-    const doc = await features.query;
-
+    const doc = await Model.find();
 
     //SENT RESPONSE
     res.status(200).json({
@@ -101,3 +90,31 @@ export const getAll = Model =>catchAsync(async (req, res, next) => {
         },
     });
 });
+
+
+// //GET ALL document
+// export const getAll = Model =>catchAsync(async (req, res, next) => {
+
+//     //to allow for nested get reviews on tour
+//     let filter = {};
+//     if (req.params.tourId) filter = { tour: req.params.tourId };
+
+//     //EXECTUT QUERY
+//     const features = new APIFeature(Model.find(filter), req.query)
+//         .filter()
+//         .sorting()
+//         .limitFields()
+//         .paginate();
+//     //const doc = await features.query.explain();
+//     const doc = await features.query;
+
+
+//     //SENT RESPONSE
+//     res.status(200).json({
+//         status: "success",
+//         results: doc.length,
+//         data: {
+//             data: doc,
+//         },
+//     });
+// });
