@@ -10,6 +10,7 @@ const connectBDD = async()=>{
             useUnifiedTopology: true,
             useNewUrlParser: true,
             useCreateIndex: true,
+            useFindAndModify:false
         })
         console.log(`Connect to MongoDB at : ${co.connection.host}....😻  `.cyan.underline)
 

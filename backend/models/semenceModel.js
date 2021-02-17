@@ -5,8 +5,10 @@ const semenceSchema = new mongoose.Schema({
         type: String,
         require: [true, "Legume obligatoire "]
     },
-    Cultivar: {
-        type:String
+    cultivar: {
+        type:String,
+        require: [true, "cultivar obligatoire"],
+        unique:[ true, 'le cultivar existe deja !']
     },
     startSemis:{
         type:Date

@@ -1,5 +1,5 @@
 import express from 'express';
-import {getAllSeed} from '../controllers/graineController.js';
+import {getAllSeed,createSeed,patchSeed,deleteSeed,getOneSeed } from '../controllers/graineController.js';
 import { protect } from '../controllers/authController.js'
 
 
@@ -10,8 +10,16 @@ router.route('/')
 //@route POST /api/v1/seed
 //@access Privé
 .get(getAllSeed)
+//@desc cree entré grainothéque
+//@route POST /api/v1/seed
+//@access Privé
+.post(createSeed)
 
 
+router.route('/:id')
+.patch(patchSeed)
+.delete(deleteSeed)
+.get(getOneSeed)
 
 
 export default router;
