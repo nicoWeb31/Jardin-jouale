@@ -11,15 +11,18 @@ const Graine = () => {
                 <i className="fas fa-plus-circle fa-5x addBtn"></i>
             </div>
             <table class="responstable">
-                <tr>
-                    <th>Legume</th>
-                    <th>cultivar</th>
-                    <th>Début-semis</th>
-                    <th>Fin-SEmis</th>
-                    <th>Quantités</th>
-                    <th>Commentaire</th>
-                    <th></th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Legume</th>
+                        <th>cultivar</th>
+                        <th>Début-semis</th>
+                        <th>Fin-SEmis</th>
+                        <th>Quantités</th>
+                        <th>Commentaire</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <td>Tomate</td>
                     <td>Green-zebra</td>
@@ -49,6 +52,7 @@ const Graine = () => {
                         </div>
                     </td>
                 </tr>
+                </tbody>
                 {/* {listeSeeds.map((seed)=>{
                     return (
                 <tr>

@@ -6,9 +6,7 @@
     flex-direction: column;
     align-items: center;
 }
-table tr:nth-child(odd) {
-    background-color: red;
-}
+
 .responstable {
     padding: 1rem;
     margin-top: 2rem;
@@ -21,16 +19,20 @@ table tr:nth-child(odd) {
     border: 1px solid black;
 
     th {
-        background: rgba($c-b, 0.3);
+        background: rgba($c-t, 0.8);
         border-top: 1px solid black;
     }
     td {
         border-top: 1px solid black;
     }
 
-    tr {
-        &:nth-child(odd) {
-            background: rgba($c-w,.5);
+    tbody {
+        border-top: 1px solid black;
+
+        tr {
+            &:nth-child(odd) {
+                background: rgba($c-w, 0.5);
+            }
         }
     }
 }
