@@ -24,6 +24,13 @@ const Graine = ({ history }) => {
         dispatch(fetchSeed());
     }, [userInfo, history, dispatch]);
 
+
+    //__________________________________fonction_______________________________________
+
+    const deleteSeed = () =>{
+        
+    }
+
     return (
         <div className="containerAdminSeed">
             <h1>Liste des graines</h1>
@@ -59,8 +66,8 @@ const Graine = ({ history }) => {
                                         <td>{seed.comment}</td>
                                         <td>
                                             <div className="btnContent">
-                                                <i class="fas fa-edit fa-2x btnEdit"></i>
-                                                <i class="fas fa-trash fa-2x btnTrash"></i>
+                                                <i class="fas fa-edit fa-2x btnEdit" ></i>
+                                                <i class="fas fa-trash fa-2x btnTrash" onClick={deleteSeed}></i>
                                             </div>
                                         </td>
                                     </tr>

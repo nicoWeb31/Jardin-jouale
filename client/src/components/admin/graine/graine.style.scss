@@ -48,6 +48,7 @@
 
         &:hover {
             color: $c-s;
+            cursor: pointer;
         }
     }
 
@@ -57,6 +58,7 @@
 
         &:hover {
             color: $c-d;
+            cursor: pointer;
         }
     }
 }
