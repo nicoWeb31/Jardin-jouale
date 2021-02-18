@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import './graine.style.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchSeed } from '../../../redux/actions/seedActions';
+import {
+    fetchSeed,
+    deleteSeed as deleteSeedAction,
+} from '../../../redux/actions/seedActions';
 import Spinner from '../../spinner/Spinner';
-
+import { toast } from 'react-toastify';
 
 const Graine = ({ history }) => {
     const dispatch = useDispatch();
@@ -15,21 +18,24 @@ const Graine = ({ history }) => {
     } = useSelector((state) => state.seeds);
     const { userInfo } = useSelector((state) => state.userLogin);
 
-    console.log('🚀 ~ file: Graine.jsx ~ line 13 ~ Graine ~ allSeed', seeds);
+    
+
     useEffect(() => {
         if (!userInfo) {
-            history.push('/');
+            return history.push('/');
         }
-
         dispatch(fetchSeed());
     }, [userInfo, history, dispatch]);
 
-
     //__________________________________fonction_______________________________________
 
-    const deleteSeed = () =>{
-        
-    }
+    const deleteSeed = (id) => {
+        try {
+            dispatch(deleteSeedAction(id));
+            toast.success('Suprimer avec success!!');
+            dispatch(fetchSeed());
+        } catch (error) {}
+    };
 
     return (
         <div className="containerAdminSeed">
@@ -39,7 +45,7 @@ const Graine = ({ history }) => {
             </div>
             {error && <p>{error}</p>}
             {loading ? (
-                < Spinner />
+                <Spinner />
             ) : (
                 <table class="responstable">
                     <thead>
@@ -47,7 +53,7 @@ const Graine = ({ history }) => {
                             <th>Legume</th>
                             <th>cultivar</th>
                             <th>Début-semis</th>
-                            <th>Fin-SEmis</th>
+                            <th>Fin-Semis</th>
                             <th>Quantités</th>
                             <th>Commentaire</th>
                             <th></th>
@@ -57,7 +63,7 @@ const Graine = ({ history }) => {
                         {seeds &&
                             seeds.map((seed) => {
                                 return (
-                                    <tr index={seed._id}>
+                                    <tr key={seed._id}>
                                         <td>{seed.legume}</td>
                                         <td>{seed.cultivar}</td>
                                         <td>{seed.startSemis}</td>
@@ -66,8 +72,13 @@ const Graine = ({ history }) => {
                                         <td>{seed.comment}</td>
                                         <td>
                                             <div className="btnContent">
-                                                <i class="fas fa-edit fa-2x btnEdit" ></i>
-                                                <i class="fas fa-trash fa-2x btnTrash" onClick={deleteSeed}></i>
+                                                <i class="fas fa-edit fa-2x btnEdit"></i>
+                                                <i
+                                                    class="fas fa-trash fa-2x btnTrash"
+                                                    onClick={() =>
+                                                        deleteSeed(seed._id)
+                                                    }
+                                                ></i>
                                             </div>
                                         </td>
                                     </tr>

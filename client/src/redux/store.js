@@ -3,15 +3,23 @@ import thunk from 'redux-thunk';
 import { reducer as reduxForm } from 'redux-form';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { userLoginReducer,userRegisterReducer,forgotPasswordReducer } from './reducers/authReducers';
-import {FetchSeedReducer} from '../redux/reducers/seedReducer'
+import {
+    userLoginReducer,
+    userRegisterReducer,
+    forgotPasswordReducer,
+} from './reducers/authReducers';
+import {
+    FetchSeedReducer,
+    deleteSeedReducer,
+} from '../redux/reducers/seedReducer';
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     forgotPassword: forgotPasswordReducer,
     seeds: FetchSeedReducer,
-    form: reduxForm
+    deleteSeed: deleteSeedReducer,
+    form: reduxForm,
 });
 
 //from storage
@@ -28,7 +36,6 @@ const intialeState = {
         cartItems: cartItemsFromStorages,
     },
     userLogin: { userInfo: userInfoFromStrorage },
-    
 };
 
 const middleware = [thunk];
