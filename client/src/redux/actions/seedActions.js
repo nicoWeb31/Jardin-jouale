@@ -18,8 +18,8 @@ export const fetchSeed = () => async (dispatch, getState) => {
             headers: { Authorization: `Bearer ${userInfo.token}` },
         };
 
-        const { data } = await axios.get('api/v1/seed', config);
-        dispatch({ type: FETCH_SEED_SUCCESS, payload: data });
+        const { data } = await axios.get('/api/v1/seed', config);
+        dispatch({ type: FETCH_SEED_SUCCESS, payload: data.data });
     } catch (error) {
         dispatch({ type: FETCH_SEED_FAIL, payload: error });
     }

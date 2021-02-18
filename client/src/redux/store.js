@@ -10,7 +10,7 @@ const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     forgotPassword: forgotPasswordReducer,
-    Seeds: FetchSeedReducer,
+    seeds: FetchSeedReducer,
     form: reduxForm
 });
 

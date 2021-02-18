@@ -66,10 +66,7 @@ const Login = ({ history, handleSubmit }) => {
 
     return (
         <div className="loginPage">
-            <div>
-                {/* error from server TODO:*/}
-                {error && <h3>{error}</h3>}
-            </div>
+
 
             <div>{loading && <h3>loading......</h3>}</div>
 
