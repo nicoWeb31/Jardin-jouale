@@ -4,11 +4,13 @@ import { reducer as reduxForm } from 'redux-form';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { userLoginReducer,userRegisterReducer,forgotPasswordReducer } from './reducers/authReducers';
+import {FetchSeedReducer} from '../redux/reducers/seedReducer'
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     forgotPassword: forgotPasswordReducer,
+    Seeds: FetchSeedReducer,
     form: reduxForm
 });
 
