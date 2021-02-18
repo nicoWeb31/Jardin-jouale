@@ -37,6 +37,7 @@ function App() {
                         <Route path="/login" component={Login} />
                         <Route path="/register" component={Register} />
                         <Route path="/forgotPassword" component={ForgotPassword} />
+                        {/* TODO:resetpassword */}
 
                     </Switch>
                 </main>

@@ -53,20 +53,6 @@ const Graine = () => {
                     </td>
                 </tr>
                 </tbody>
-                {/* {listeSeeds.map((seed)=>{
-                    return (
-                <tr>
-                    <td>Tomate</td>
-                    <td>Green-zebra</td>
-                    <td>12-03</td>
-                    <td>14-05</td>
-                    <td>300</td>
-                    <td>Super génial</td>
-
-                </tr>
-
-                        )
-                })} */}
             </table>
         </div>
     );
