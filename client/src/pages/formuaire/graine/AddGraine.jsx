@@ -3,33 +3,20 @@ import './addGraine.style.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import ButtonP from '../../../components/button/ButtonP';
-import FormRenderError from '../../../components/formRenderError/FormRenderError';
+import {renderInput} from '../../../components/renderInput/RenderInput';
 
 
-const renderInput = (formProps) => {
-    return (
-        <div className="form__group">
-            <input
-                {...formProps.input}
-                autoComplete="off"
-                placeholder={formProps.placeholder}
-                className={`${
-                    formProps.meta.touched
-                        ? formProps.meta.error
-                            ? 'inpuTError'
-                            : 'inputOK'
-                        : ''
-                }  form__input `}
-                type={formProps.type}
-            />
-            <label className="form__label">{formProps.label}</label>
-            <FormRenderError meta={formProps.meta}/>
-        </div>
-    );
-};
 
 
-const AddGraine = () => {
+const AddGraine = ({ history, handleSubmit}) => {
+
+
+
+    const onHandleSubmit = () =>{
+
+    }
+
+
     return (
         <div>
             Ajouter une graine au catalogue
@@ -61,8 +48,8 @@ const AddGraine = () => {
                                 </Link>
                             </small>
                             <small>
-                                Vous n'avez pas de compte :
-                                <Link to="/forgotPassword" className="navLink">
+                                Retour :
+                                <Link to="/admin" className="navLink">
                                     Mot de passe oublié ?
                                 </Link>
                             </small>
@@ -71,14 +58,9 @@ const AddGraine = () => {
                             <button
                                 type="submit"
                                 className="loginBtn"
-                                // disabled={
-                                //     valuesForm &&
-                                //     !valuesForm.email &&
-                                //     !valuesForm.password
-                                // }
                             >
                                 <i className="fas fa-arrow-right"></i>
-                                Connexion
+                                Ajouter
                             </button>
                         </ButtonP>
                     </form>
@@ -88,4 +70,4 @@ const AddGraine = () => {
     )
 }
 
-export default AddGraine
+export default reduxForm({ form: 'addGraine'})(AddGraine)

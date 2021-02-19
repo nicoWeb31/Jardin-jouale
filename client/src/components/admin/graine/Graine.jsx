@@ -6,6 +6,7 @@ import {
     deleteSeed as deleteSeedAction,
 } from '../../../redux/actions/seedActions';
 import Spinner from '../../spinner/Spinner';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Graine = ({ history }) => {
@@ -17,8 +18,6 @@ const Graine = ({ history }) => {
         error,
     } = useSelector((state) => state.seeds);
     const { userInfo } = useSelector((state) => state.userLogin);
-
-    
 
     useEffect(() => {
         if (!userInfo) {
@@ -41,7 +40,9 @@ const Graine = ({ history }) => {
         <div className="containerAdminSeed">
             <h1>Liste des graines</h1>
             <div>
-                <i className="fas fa-plus-circle fa-5x addBtn"></i>
+                <Link to='/admin/graine/add'>
+                    <i className="fas fa-plus-circle fa-5x addBtn"></i>
+                </Link>
             </div>
             {error && <p>{error}</p>}
             {loading ? (

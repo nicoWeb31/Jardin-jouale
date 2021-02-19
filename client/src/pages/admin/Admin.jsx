@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Link, Switch, useRouteMatch } from 'react-router-dom';
 import Graine from '../../components/admin/graine/Graine';
 import User from '../../components/admin/user/User';
+import AddGraine from '../formuaire/graine/AddGraine';
 import './Admin.style.scss';
 
 const Admin = () => {
@@ -31,7 +32,7 @@ const Admin = () => {
 
 
                         <Route path={`${path}/graine`} exact component={Graine} />
-                        <Route path={`${path}/graine/add`} exact component={Graine} />
+                        <Route path={`${path}/graine/add`} exact component={AddGraine} />
 
                         <Route path={`${path}/user`} exact component={User} />
 
