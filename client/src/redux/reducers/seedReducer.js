@@ -8,83 +8,105 @@ import {
     CREATE_SEED_FAIL,
     CREATE_SEED_REQUEST,
     CREATE_SEED_SUCCESS,
+    DETAIL_SEED_FAIL,
+    DETAIL_SEED_SUCCESS,
+    DETAIL_SEED_REQUEST,
 } from '../types/seedType';
 
-export const FetchSeedReducer = (state = {allSeed : []}, action) => {
+export const FetchSeedReducer = (state = { allSeed: [] }, action) => {
     switch (action.type) {
-
         case FETCH_SEED_REQUEST:
             return {
-                loading : true,
-                allSeed : [],
-            }
+                loading: true,
+                allSeed: [],
+            };
 
         case FETCH_SEED_SUCCESS:
             return {
-                loading : false,
-                allSeed : action.payload,
-            }
-            
+                loading: false,
+                allSeed: action.payload,
+            };
+
         case FETCH_SEED_FAIL:
             return {
                 laoding: false,
                 error: action.payload,
-            }    
+            };
 
         default:
             return state;
     }
 };
 
-
 export const deleteSeedReducer = (state = {}, action) => {
     switch (action.type) {
-
         case DELETE_SEED_REQUEST:
             return {
-                loading : true
-            }
+                loading: true,
+            };
 
         case DELETE_SEED_SUCCESS:
             return {
-                loading : false,
-                success : true,
-            }
-            
+                loading: false,
+                success: true,
+            };
+
         case DELETE_SEED_FAIL:
             return {
                 laoding: false,
                 error: action.payload,
-            }    
+            };
 
         default:
             return state;
     }
 };
 
-
 export const addSeedReducer = (state = {}, action) => {
     switch (action.type) {
-
         case CREATE_SEED_REQUEST:
             return {
-                loading : true
-            }
+                loading: true,
+            };
 
         case CREATE_SEED_SUCCESS:
             return {
-                loading : false,
-                success : true,
-            }
-            
+                loading: false,
+                success: true,
+            };
+
         case CREATE_SEED_FAIL:
             return {
                 laoding: false,
                 error: action.payload,
-            }    
+            };
 
         default:
             return state;
     }
 };
 
+export const detailSeedReducer = (state = { seedDetail: {} }, action) => {
+    switch (action.type) {
+        case DETAIL_SEED_REQUEST:
+            return {
+                loading: true,
+                seedDetail: {}
+            };
+
+        case DETAIL_SEED_SUCCESS:
+            return {
+                loading: false,
+                seedDetail: action.payload,
+            };
+
+        case DETAIL_SEED_FAIL:
+            return {
+                laoding: false,
+                error: action.payload,
+            };
+
+        default:
+            return state;
+    }
+};

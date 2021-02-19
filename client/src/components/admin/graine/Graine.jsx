@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Graine = ({ history }) => {
-
     const dispatch = useDispatch();
 
     const {
@@ -25,7 +24,6 @@ const Graine = ({ history }) => {
             return history.push('/');
         }
         dispatch(fetchSeed());
-
     }, [userInfo, history, dispatch]);
 
     //__________________________________fonction_______________________________________
@@ -42,7 +40,7 @@ const Graine = ({ history }) => {
         <div className="containerAdminSeed">
             <h1>Liste des graines</h1>
             <div>
-                <Link to='/admin/graine/add'>
+                <Link to="/admin/graine/add">
                     <i className="fas fa-plus-circle fa-5x addBtn"></i>
                 </Link>
             </div>
@@ -69,14 +67,35 @@ const Graine = ({ history }) => {
                                     <tr key={seed._id}>
                                         <td>{seed.legume}</td>
                                         <td>{seed.cultivar}</td>
-                                        <td>{new Date(seed.startSemis).getUTCDate() + '/' + (new Date(seed.startSemis).getUTCMonth() + 1)}</td>
-                                        <td>{new Date(seed.endSemis).getUTCDate() + '/' + ((new Date(seed.endSemis).getUTCMonth()*1) + 1) }</td>
+                                        <td>
+                                            {new Date(
+                                                seed.startSemis
+                                            ).getUTCDate() +
+                                                '/' +
+                                                (new Date(
+                                                    seed.startSemis
+                                                ).getUTCMonth() +
+                                                    1)}
+                                        </td>
+                                        <td>
+                                            {new Date(
+                                                seed.endSemis
+                                            ).getUTCDate() +
+                                                '/' +
+                                                (new Date(
+                                                    seed.endSemis
+                                                ).getUTCMonth() *
+                                                    1 +
+                                                    1)}
+                                        </td>
 
                                         <td>{seed.quantity}</td>
                                         <td>{seed.comment}</td>
                                         <td>
                                             <div className="btnContent">
-                                                <i class="fas fa-edit fa-2x btnEdit"></i>
+                                                <Link to={`/admin/graine/edit/${seed._id}`}>
+                                                    <i class="fas fa-edit fa-2x btnEdit"></i>
+                                                </Link>
                                                 <i
                                                     class="fas fa-trash fa-2x btnTrash"
                                                     onClick={() =>

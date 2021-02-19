@@ -9,6 +9,9 @@ import {
     CREATE_SEED_FAIL,
     CREATE_SEED_REQUEST,
     CREATE_SEED_SUCCESS,
+    DETAIL_SEED_FAIL,
+    DETAIL_SEED_SUCCESS,
+    DETAIL_SEED_REQUEST
 } from '../types/seedType';
 //____________________________________________________________
 export const fetchSeed = () => async (dispatch, getState) => {
@@ -64,5 +67,35 @@ export const deleteSeed = (id) => async (dispatch, getState) => {
         dispatch({ type: DELETE_SEED_SUCCESS });
     } catch (error) {
         dispatch({ type: DELETE_SEED_FAIL, payload: error });
+    }
+};
+
+//_____________________________________________________________________________
+export const seedDetail = (id) => async (dispatch,getState) => {
+    try {
+
+        dispatch({ type: DETAIL_SEED_REQUEST });
+        const {
+            userLogin: { userInfo },
+        } = getState();
+
+        const config = {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+        };
+
+        //on dispatch la request pour le loading par exemple
+        const { data } = await axios.get(`/api/v1/seed/${id}`, config);
+
+        //on dispatch les datas.. stop loading and display the data
+        dispatch({ type: DETAIL_SEED_SUCCESS, payload: data.product });
+    } catch (error) {
+        //dispatch des errors
+        dispatch({
+            type: DETAIL_SEED_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
     }
 };

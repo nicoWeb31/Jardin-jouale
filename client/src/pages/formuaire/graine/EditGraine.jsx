@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addSeed } from '../../../redux/actions/seedActions';
 import { toast } from 'react-toastify';
 
-const AddGraine = ({ history, handleSubmit }) => {
+const EditGraine = ({ history, handleSubmit }) => {
     const dispatch = useDispatch();
 
     const { addGraine } = useSelector((state) => state.form);
@@ -42,7 +42,7 @@ const AddGraine = ({ history, handleSubmit }) => {
         <div className="AddGrainePage">
 
             {/* {error && toast.error(error)} */}
-            <h1>Ajouter une graine au catalogue</h1>
+            <h1>Modifier graine : ......</h1>
             <div className="formulaire__form">
                 <form onSubmit={handleSubmit(onHandleSubmit)} className="form">
                     <Field
@@ -135,4 +135,4 @@ const validate = (formValues) => {
     return errors;
 };
 
-export default reduxForm({ form: 'addGraine', validate })(AddGraine);
+export default reduxForm({ form: 'addGraine', validate })(EditGraine);
