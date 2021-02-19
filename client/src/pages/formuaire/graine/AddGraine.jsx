@@ -1,73 +1,85 @@
-import React from 'react'
+import React from 'react';
 import './addGraine.style.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import ButtonP from '../../../components/button/ButtonP';
-import {renderInput} from '../../../components/renderInput/RenderInput';
+import { renderInput } from '../../../components/renderInput/RenderInput';
 
-
-
-
-const AddGraine = ({ history, handleSubmit}) => {
-
-
-
-    const onHandleSubmit = () =>{
-
-    }
-
+const AddGraine = ({ history, handleSubmit }) => {
+    const onHandleSubmit = () => {};
 
     return (
-        <div>
-            Ajouter une graine au catalogue
+        <div className="AddGrainePage">
+            <h1>Ajouter une graine au catalogue</h1>
             <div className="formulaire__form">
-                    <form
-                        onSubmit={handleSubmit(onHandleSubmit)}
-                        className="form"
-                    >
-                        <Field
-                            name="email"
-                            component={renderInput}
-                            label="Email"
-                            placeholder="votre email !"
-                        />
+                <form onSubmit={handleSubmit(onHandleSubmit)} className="form">
+                    <Field
+                        name="legume"
+                        component={renderInput}
+                        label="Legume"
+                        placeholder="ex : tomate !"
+                        type="text"
+                    />
 
-                        <Field
-                            name="password"
-                            type="password"
-                            component={renderInput}
-                            label="Password"
-                            placeholder="votre password !"
-                        />
-                        <hr />
-                        <div className="reset">
-                            <small>
-                                Vous n'avez pas de compte :
-                                <Link to="/register" className="navLink">
-                                    créer compte
-                                </Link>
-                            </small>
-                            <small>
-                                Retour :
-                                <Link to="/admin" className="navLink">
-                                    Mot de passe oublié ?
-                                </Link>
-                            </small>
-                        </div>
-                        <ButtonP>
-                            <button
-                                type="submit"
-                                className="loginBtn"
-                            >
-                                <i className="fas fa-arrow-right"></i>
-                                Ajouter
-                            </button>
-                        </ButtonP>
-                    </form>
-                </div>
+                    <Field
+                        name="cultivar"
+                        type="text"
+                        component={renderInput}
+                        label="cultivar"
+                        placeholder="ex : green-zebra !"
+                    />
 
+                    <Field
+                        name="startSemis"
+                        type="date"
+                        component={renderInput}
+                        label="debut du semis"
+                        placeholder="ex : dd/mm/yyyy !"
+                    />
+
+                    <Field
+                        name="endSemis"
+                        type="date"
+                        component={renderInput}
+                        label="Fin du semis"
+                        placeholder="ex : dd/mm/yyyy !"
+                    />
+
+                    <Field
+                        name="quantity"
+                        type="number"
+                        component={renderInput}
+                        label="Quantités"
+                        placeholder="ex : 1234"
+                    />
+
+                    <Field
+                        name="comment"
+                        type="text"
+                        component={renderInput}
+                        label="Commentaire"
+                        placeholder="ex : balibalo  dans son... !"
+                    />
+
+                    <hr />
+                    <div className="reset">
+                        <small>
+                            <Link to="/admin/graine" className="navLink">
+                                retour
+                            </Link>
+                        </small>
+
+                    </div>
+                    <ButtonP>
+                        <button type="submit" className="loginBtn">
+                            <i className="fas fa-arrow-right"></i>
+                            Ajouter
+                        </button>
+                    </ButtonP>
+                </form>
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default reduxForm({ form: 'addGraine'})(AddGraine)
+export default reduxForm({ form: 'addGraine' })(AddGraine);

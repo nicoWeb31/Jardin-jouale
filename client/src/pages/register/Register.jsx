@@ -77,13 +77,14 @@ const Register = ({ history, handleSubmit }) => {
                 <div className="formulaire__form">
                     <form
                         onSubmit={handleSubmit(onHandleSubmit)}
-                        className="form"
+                        className="formBlock"
                     >
                         <Field
                             name="email"
                             component={renderInput}
                             label="Email"
                             placeholder="votre email !"
+                            className="inputForm"
                         />
 
                         <Field
