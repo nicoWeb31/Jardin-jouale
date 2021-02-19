@@ -11,7 +11,10 @@ import {
 import {
     FetchSeedReducer,
     deleteSeedReducer,
-    addSeedReducer
+    addSeedReducer,
+    detailSeedReducer,
+    UpdateSeedReducer
+
 } from '../redux/reducers/seedReducer';
 
 const reducer = combineReducers({
@@ -21,6 +24,8 @@ const reducer = combineReducers({
     seeds: FetchSeedReducer,
     deleteSeed: deleteSeedReducer,
     addSeed: addSeedReducer,
+    detailSeed:detailSeedReducer,
+    updateSeed :UpdateSeedReducer,
     form: reduxForm,
 });
 

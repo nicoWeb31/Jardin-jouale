@@ -11,6 +11,10 @@ import {
     DETAIL_SEED_FAIL,
     DETAIL_SEED_SUCCESS,
     DETAIL_SEED_REQUEST,
+    UPDATE_SEED_RESET,
+    UPDATE_SEED_REQUEST,
+    UPDATE_SEED_SUCCESS,
+    UPDATE_SEED_FAIL
 } from '../types/seedType';
 
 export const FetchSeedReducer = (state = { allSeed: [] }, action) => {
@@ -101,6 +105,31 @@ export const detailSeedReducer = (state = { seedDetail: {} }, action) => {
             };
 
         case DETAIL_SEED_FAIL:
+            return {
+                laoding: false,
+                error: action.payload,
+            };
+
+        default:
+            return state;
+    }
+};
+
+
+export const UpdateSeedReducer = (state = {}, action) => {
+    switch (action.type) {
+        case UPDATE_SEED_REQUEST:
+            return {
+                loading: true,
+            };
+
+        case UPDATE_SEED_SUCCESS:
+            return {
+                loading: false,
+                success: true,
+            };
+
+        case UPDATE_SEED_FAIL:
             return {
                 laoding: false,
                 error: action.payload,

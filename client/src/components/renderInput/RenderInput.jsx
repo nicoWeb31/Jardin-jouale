@@ -10,6 +10,7 @@ export const renderInput = (formProps) => {
                 {...formProps.input}
                 autoComplete="off"
                 placeholder={formProps.placeholder}
+                value={formProps.valueInput}
                 className={`${
                     formProps.meta.touched
                         ? formProps.meta.error

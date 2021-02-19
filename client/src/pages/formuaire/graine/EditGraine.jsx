@@ -1,46 +1,34 @@
-import React,{ useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './addGraine.style.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import ButtonP from '../../../components/button/ButtonP';
 import { renderInput } from '../../../components/renderInput/RenderInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSeed } from '../../../redux/actions/seedActions';
+import { seedDetailAction } from '../../../redux/actions/seedActions';
 import { toast } from 'react-toastify';
 
-const EditGraine = ({ history, handleSubmit }) => {
+const EditGraine = ({ history, handleSubmit, match }) => {
+    const seedID = match.params.id;
+
     const dispatch = useDispatch();
 
-    const { addGraine } = useSelector((state) => state.form);
-    const {error, success} = useSelector((state) => state.addSeed);
+    const { error, seedDetail } = useSelector((state) => state.detailSeed);
+    const { error: errorUpdate, success } = useSelector(
+        (state) => state.updateSeed
+    );
+    
+    console.log("🚀 ~ file: EditGraine.jsx ~ line 22 ~ EditGraine ~ seedDetail", seedDetail)
+    useEffect(() => {
 
+        dispatch(seedDetailAction(seedID))
 
-    useEffect(()=>{
+    }, []);
 
-        if(success){
-            toast.success(
-                `${addGraine.values.legume} a été ajouter avec succsé`
-            );
-            history.push('/admin/graine');
-        }
-
-        if(error){
-            toast.error(error.message);
-
-        }
-
-        
-    },[dispatch,history,success,error, addGraine]);
-
-    const onHandleSubmit = () => {
-
-            dispatch(addSeed(addGraine.values));
-
-    };
+    const onHandleSubmit = () => {};
 
     return (
         <div className="AddGrainePage">
-
             {/* {error && toast.error(error)} */}
             <h1>Modifier graine : ......</h1>
             <div className="formulaire__form">
@@ -51,6 +39,7 @@ const EditGraine = ({ history, handleSubmit }) => {
                         label="Legume"
                         placeholder="ex : tomate !"
                         type="text"
+                        valueInput={seedDetail.legume}
                         
                     />
 
@@ -60,6 +49,8 @@ const EditGraine = ({ history, handleSubmit }) => {
                         component={renderInput}
                         label="cultivar"
                         placeholder="ex : green-zebra !"
+                        valueInput={seedDetail.cultivar}
+
                     />
 
                     <Field
@@ -68,6 +59,8 @@ const EditGraine = ({ history, handleSubmit }) => {
                         component={renderInput}
                         label="debut du semis"
                         placeholder="ex : dd/mm/yyyy !"
+                        valueInput={seedDetail.startSemis}
+
                     />
 
                     <Field
@@ -76,6 +69,8 @@ const EditGraine = ({ history, handleSubmit }) => {
                         component={renderInput}
                         label="Fin du semis"
                         placeholder="ex : dd/mm/yyyy !"
+                        valueInput={seedDetail.endSemis}
+
                     />
 
                     <Field
@@ -84,6 +79,7 @@ const EditGraine = ({ history, handleSubmit }) => {
                         component={renderInput}
                         label="Quantités"
                         placeholder="ex : 1234"
+                        valueInput={seedDetail.quantity}
                     />
 
                     <Field
@@ -91,14 +87,15 @@ const EditGraine = ({ history, handleSubmit }) => {
                         type="text"
                         component={renderInput}
                         label="Commentaire"
-                        placeholder="ex : balibalo  dans son... !"
+                        valueInput={seedDetail.comment}
+                        
                     />
 
                     <hr />
                     <div className="reset">
                         <ButtonP>
                             <Link to="/admin/graine">
-                                <button className='loginBtn'>
+                                <button className="loginBtn">
                                     <i className="fas fa-arrow-left"></i>
                                     retour
                                 </button>
