@@ -1,28 +1,47 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 import './addGraine.style.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import ButtonP from '../../../components/button/ButtonP';
 import { renderInput } from '../../../components/renderInput/RenderInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSeed } from '../../../redux/actions/seedActions'
-
+import { addSeed } from '../../../redux/actions/seedActions';
+import { toast } from 'react-toastify';
 
 const AddGraine = ({ history, handleSubmit }) => {
-
-
     const dispatch = useDispatch();
 
-    const {addGraine} = useSelector((state) => state.form);
+    const { addGraine } = useSelector((state) => state.form);
+    const {error, success} = useSelector((state) => state.addSeed);
 
+
+    useEffect(()=>{
+
+        if(success){
+            toast.success(
+                `${addGraine.values.legume} a été ajouter avec succsé`
+            );
+            history.push('/admin/graine');
+        }
+
+        if(error){
+            toast.error(error.message);
+
+        }
+
+        
+    },[dispatch,history,success,error, addGraine]);
 
     const onHandleSubmit = () => {
-        dispatch(addSeed(addGraine.values))
-        console.log(addGraine.values);
+
+            dispatch(addSeed(addGraine.values));
+
     };
 
     return (
         <div className="AddGrainePage">
+
+            {/* {error && toast.error(error)} */}
             <h1>Ajouter une graine au catalogue</h1>
             <div className="formulaire__form">
                 <form onSubmit={handleSubmit(onHandleSubmit)} className="form">
@@ -76,12 +95,14 @@ const AddGraine = ({ history, handleSubmit }) => {
 
                     <hr />
                     <div className="reset">
-                        <small>
-                            <Link to="/admin/graine" className="navLink">
-                                retour
+                        <ButtonP>
+                            <Link to="/admin/graine">
+                                <button className='loginBtn'>
+                                    <i className="fas fa-arrow-left"></i>
+                                    retour
+                                </button>
                             </Link>
-                        </small>
-
+                        </ButtonP>
                     </div>
                     <ButtonP>
                         <button type="submit" className="loginBtn">
@@ -95,20 +116,16 @@ const AddGraine = ({ history, handleSubmit }) => {
     );
 };
 
-
 const validate = (formValues) => {
     const errors = {};
 
-
     if (!formValues.legume) {
-
         errors.legume = 'vous devez entrer votre un nom de legume !';
     }
 
     if (!formValues.cultivar) {
         errors.cultivar = 'vous devez entrer un cultivar !';
     }
-
 
     if (!formValues.quantity) {
         errors.quantity = 'vous devez entrer une quantités !';
@@ -117,5 +134,4 @@ const validate = (formValues) => {
     return errors;
 };
 
-
-export default reduxForm({ form: 'addGraine',validate })(AddGraine);
+export default reduxForm({ form: 'addGraine', validate })(AddGraine);

@@ -41,8 +41,8 @@ export const addSeed = (seed) => async (dispatch, getState) => {
             headers: { Authorization: `Bearer ${userInfo.token}` },
         };
 
-        const { data } = await axios.post('/api/v1/seed', seed,config);
-        dispatch({ type: CREATE_SEED_SUCCESS, payload: data.data });
+        await axios.post('/api/v1/seed', seed,config);
+        dispatch({ type: CREATE_SEED_SUCCESS });
     } catch (error) {
         dispatch({ type: CREATE_SEED_FAIL, payload: error });
     }

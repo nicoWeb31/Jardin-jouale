@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './graine.style.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Graine = ({ history }) => {
+
     const dispatch = useDispatch();
 
     const {
@@ -24,6 +25,7 @@ const Graine = ({ history }) => {
             return history.push('/');
         }
         dispatch(fetchSeed());
+
     }, [userInfo, history, dispatch]);
 
     //__________________________________fonction_______________________________________
@@ -67,7 +69,7 @@ const Graine = ({ history }) => {
                                     <tr key={seed._id}>
                                         <td>{seed.legume}</td>
                                         <td>{seed.cultivar}</td>
-                                        <td>{new Date(seed.startSemis).getUTCDate() + '/' + (new Date(seed.startSemis).getUTCMonth() + 1) }</td>
+                                        <td>{new Date(seed.startSemis).getUTCDate() + '/' + (new Date(seed.startSemis).getUTCMonth() + 1)}</td>
                                         <td>{new Date(seed.endSemis).getUTCDate() + '/' + ((new Date(seed.endSemis).getUTCMonth()*1) + 1) }</td>
 
                                         <td>{seed.quantity}</td>
