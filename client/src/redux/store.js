@@ -11,6 +11,7 @@ import {
 import {
     FetchSeedReducer,
     deleteSeedReducer,
+    addSeedReducer
 } from '../redux/reducers/seedReducer';
 
 const reducer = combineReducers({
@@ -19,6 +20,7 @@ const reducer = combineReducers({
     forgotPassword: forgotPasswordReducer,
     seeds: FetchSeedReducer,
     deleteSeed: deleteSeedReducer,
+    addSeed: addSeedReducer,
     form: reduxForm,
 });
 

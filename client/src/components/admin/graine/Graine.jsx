@@ -67,8 +67,9 @@ const Graine = ({ history }) => {
                                     <tr key={seed._id}>
                                         <td>{seed.legume}</td>
                                         <td>{seed.cultivar}</td>
-                                        <td>{seed.startSemis}</td>
-                                        <td>{seed.endSemis}</td>
+                                        <td>{new Date(seed.startSemis).getUTCDate() + '/' + (new Date(seed.startSemis).getUTCMonth() + 1) }</td>
+                                        <td>{new Date(seed.endSemis).getUTCDate() + '/' + ((new Date(seed.endSemis).getUTCMonth()*1) + 1) }</td>
+
                                         <td>{seed.quantity}</td>
                                         <td>{seed.comment}</td>
                                         <td>

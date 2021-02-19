@@ -4,9 +4,22 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import ButtonP from '../../../components/button/ButtonP';
 import { renderInput } from '../../../components/renderInput/RenderInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSeed } from '../../../redux/actions/seedActions'
+
 
 const AddGraine = ({ history, handleSubmit }) => {
-    const onHandleSubmit = () => {};
+
+
+    const dispatch = useDispatch();
+
+    const {addGraine} = useSelector((state) => state.form);
+
+
+    const onHandleSubmit = () => {
+        dispatch(addSeed(addGraine.values))
+        console.log(addGraine.values);
+    };
 
     return (
         <div className="AddGrainePage">
@@ -82,4 +95,27 @@ const AddGraine = ({ history, handleSubmit }) => {
     );
 };
 
-export default reduxForm({ form: 'addGraine' })(AddGraine);
+
+const validate = (formValues) => {
+    const errors = {};
+
+
+    if (!formValues.legume) {
+
+        errors.legume = 'vous devez entrer votre un nom de legume !';
+    }
+
+    if (!formValues.cultivar) {
+        errors.cultivar = 'vous devez entrer un cultivar !';
+    }
+
+
+    if (!formValues.quantity) {
+        errors.quantity = 'vous devez entrer une quantités !';
+    }
+
+    return errors;
+};
+
+
+export default reduxForm({ form: 'addGraine',validate })(AddGraine);
