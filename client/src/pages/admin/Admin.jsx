@@ -31,6 +31,8 @@ const Admin = () => {
 
 
                         <Route path={`${path}/graine`} exact component={Graine} />
+                        <Route path={`${path}/graine/add`} exact component={Graine} />
+
                         <Route path={`${path}/user`} exact component={User} />
 
                     </Switch>

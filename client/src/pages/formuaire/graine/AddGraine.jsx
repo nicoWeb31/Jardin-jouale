@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
-import ButtonP from '../../components/button/ButtonP';
-import '../../form.style.scss';
-import './login.style.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../redux/actions/authActions';
+import React from 'react'
+import './addGraine.style.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import FormRenderError from '../../components/formRenderError/FormRenderError';
+import ButtonP from '../../../components/button/ButtonP';
+import FormRenderError from '../../../components/formRenderError/FormRenderError';
 
 
 const renderInput = (formProps) => {
@@ -27,46 +23,17 @@ const renderInput = (formProps) => {
                 type={formProps.type}
             />
             <label className="form__label">{formProps.label}</label>
-            <FormRenderError meta={formProps.meta} />
+            <FormRenderError meta={formProps.meta}/>
         </div>
     );
 };
 
-const Login = ({ history, handleSubmit }) => {
-    const dispatch = useDispatch();
-    const {
-        loginForm: { values: valuesForm },
-    } = useSelector((state) => state.form);
-    const { loading, error, userInfo } = useSelector(
-        (state) => state.userLogin
-    );
 
-    useEffect(() => {
-        if (userInfo) {
-            toast.success(`Bienvenue ${userInfo.name}`);
-            history.push('/');
-        }
-
-        if (error) {
-            toast.error(error);
-        }
-    }, [history, userInfo,error]);
-
-    //____________________________function____________________________________________________
-
-    const onHandleSubmit = () => {
-        dispatch(login(valuesForm));
-    };
-
+const AddGraine = () => {
     return (
-        <div className="loginPage">
-
-
-            <div>{loading && <h3>loading......</h3>}</div>
-
-            <div class="loginBlock">
-                <h1>Connexion </h1>
-                <div className="formulaire__form">
+        <div>
+            Ajouter une graine au catalogue
+            <div className="formulaire__form">
                     <form
                         onSubmit={handleSubmit(onHandleSubmit)}
                         className="form"
@@ -104,11 +71,11 @@ const Login = ({ history, handleSubmit }) => {
                             <button
                                 type="submit"
                                 className="loginBtn"
-                                disabled={
-                                    valuesForm &&
-                                    !valuesForm.email &&
-                                    !valuesForm.password
-                                }
+                                // disabled={
+                                //     valuesForm &&
+                                //     !valuesForm.email &&
+                                //     !valuesForm.password
+                                // }
                             >
                                 <i className="fas fa-arrow-right"></i>
                                 Connexion
@@ -116,31 +83,9 @@ const Login = ({ history, handleSubmit }) => {
                         </ButtonP>
                     </form>
                 </div>
-            </div>
+
         </div>
-    );
-};
+    )
+}
 
-const validate = (formValues) => {
-    const errors = {};
-
-    if (
-        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-            formValues.email
-        ) !== true
-    ) {
-        errors.email = 'votre adresse email a un problème !';
-    }
-    if (!formValues.email) {
-        //only ran if user did not enter a name
-        errors.email = 'vous devez entrer votre mail !';
-    }
-
-    if (!formValues.password) {
-        errors.password = 'vous devez entrer votre mail !';
-    }
-
-    return errors;
-};
-
-export default reduxForm({ form: 'loginForm', validate })(Login);
+export default AddGraine

@@ -7,12 +7,8 @@ import { Link } from 'react-router-dom';
 import {toast} from 'react-toastify'
 import '../../form.style.scss';
 import './register.style.scss';
+import FormRenderError from '../../components/formRenderError/FormRenderError';
 
-const renderError = (meta) => {
-    if (meta.error && meta.touched) {
-        return <small className="errorMess">{meta.error}</small>;
-    }
-};
 
 const renderInput = (formProps) => {
     return (
@@ -31,7 +27,7 @@ const renderInput = (formProps) => {
                 type={formProps.type}
             />
             <label className="form__label">{formProps.label}</label>
-            {renderError(formProps.meta)}
+            <FormRenderError meata={formProps.meta}/>
         </div>
     );
 };
