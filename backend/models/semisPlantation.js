@@ -39,4 +39,4 @@ const plantationSemis = new mongoose.Schema({
 
 const PlantationSemis = mongoose.model('PlantationSemis', plantationSemis);
 
-export default Planning;
+export default PlantationSemis;
