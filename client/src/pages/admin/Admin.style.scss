@@ -1,11 +1,21 @@
 @import '../../variable';
 
 .blockJardin {
-    padding-top: 20rem;
+    padding-top: 10rem;
+    .hAdmin {
+        font-size: 4rem;
+        color: #444444;
+        text-shadow: 1px 0px 1px #cccccc, 0px 1px 1px #eeeeee,
+            2px 1px 1px #cccccc, 1px 2px 1px #eeeeee, 3px 2px 1px #cccccc,
+            2px 3px 1px #eeeeee, 4px 3px 1px #cccccc, 3px 4px 1px #eeeeee,
+            5px 4px 1px #cccccc, 4px 5px 1px #eeeeee, 6px 5px 1px #cccccc,
+            5px 6px 1px #eeeeee, 7px 6px 1px #cccccc;
+    }
 
-    h1{
+    h1 {
         margin: 3rem;
-        font-weight:700;
+        font-weight: 700;
+        font-size: 3rem;
         text-transform: uppercase;
     }
 
@@ -18,7 +28,7 @@
     }
 
     .sidbar {
-        background: rgba($c-b,.3);
+        background: rgba($c-b, 0.3);
         border: solid 2px black;
         height: 100vh;
         grid-row: 0/1;
@@ -28,7 +38,7 @@
         flex-direction: column;
         justify-content: space-evenly;
 
-        .itemSideBar{
+        .itemSideBar {
             text-decoration: none;
             text-transform: uppercase;
             color: $c-b;
@@ -37,26 +47,20 @@
             border: solid 2px $c-b;
             margin: 1rem;
             border-radius: 3px;
-            background:$c-s;
+            background: $c-s;
             transition: all 0.1s;
 
-            &:hover{
+            &:hover {
                 transform: scale(1.05);
-            background:$c-b;
-            border: solid 2px $c-s;
-            color:$c-s
-
-
+                background: $c-b;
+                border: solid 2px $c-s;
+                color: $c-s;
             }
-
         }
-
-
-
     }
 
     .contentAdmin {
-        background: rgba(123, 192, 75,.3);
+        background: rgba(123, 192, 75, 0.3);
         border: solid 2px black;
         height: 100vh;
         grid-row: 1/-1;

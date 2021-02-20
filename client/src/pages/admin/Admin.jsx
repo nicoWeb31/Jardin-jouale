@@ -13,7 +13,7 @@ const Admin = () => {
 
     return (
         <div className="blockJardin">
-            <h1>Administration Jardinier</h1>
+            <h1 className="hAdmin">Administration Jardinier</h1>
             <div className="gridContainer">
                 <div className="sidbar">
 
