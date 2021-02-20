@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { seedDetailAction } from '../../../redux/actions/seedActions';
 import { toast } from 'react-toastify';
 
+
+
+// initialize component wtih class a modifier
+
 const EditGraine = ({ history, handleSubmit, match }) => {
     const seedID = match.params.id;
 
@@ -18,7 +22,6 @@ const EditGraine = ({ history, handleSubmit, match }) => {
         (state) => state.updateSeed
     );
     
-    console.log("🚀 ~ file: EditGraine.jsx ~ line 22 ~ EditGraine ~ seedDetail", seedDetail)
     useEffect(() => {
 
         dispatch(seedDetailAction(seedID))
@@ -39,7 +42,7 @@ const EditGraine = ({ history, handleSubmit, match }) => {
                         label="Legume"
                         placeholder="ex : tomate !"
                         type="text"
-                        valueInput={seedDetail.legume}
+
                         
                     />
 
@@ -49,7 +52,7 @@ const EditGraine = ({ history, handleSubmit, match }) => {
                         component={renderInput}
                         label="cultivar"
                         placeholder="ex : green-zebra !"
-                        valueInput={seedDetail.cultivar}
+
 
                     />
 
@@ -59,7 +62,7 @@ const EditGraine = ({ history, handleSubmit, match }) => {
                         component={renderInput}
                         label="debut du semis"
                         placeholder="ex : dd/mm/yyyy !"
-                        valueInput={seedDetail.startSemis}
+
 
                     />
 
@@ -69,7 +72,7 @@ const EditGraine = ({ history, handleSubmit, match }) => {
                         component={renderInput}
                         label="Fin du semis"
                         placeholder="ex : dd/mm/yyyy !"
-                        valueInput={seedDetail.endSemis}
+
 
                     />
 
@@ -79,7 +82,7 @@ const EditGraine = ({ history, handleSubmit, match }) => {
                         component={renderInput}
                         label="Quantités"
                         placeholder="ex : 1234"
-                        valueInput={seedDetail.quantity}
+
                     />
 
                     <Field
@@ -87,7 +90,7 @@ const EditGraine = ({ history, handleSubmit, match }) => {
                         type="text"
                         component={renderInput}
                         label="Commentaire"
-                        valueInput={seedDetail.comment}
+
                         
                     />
 
@@ -132,4 +135,4 @@ const validate = (formValues) => {
     return errors;
 };
 
-export default reduxForm({ form: 'addGraine', validate })(EditGraine);
+export default reduxForm({ form: 'addGraine', validate,initialValues:{}, enableReinitialize:true })(EditGraine);

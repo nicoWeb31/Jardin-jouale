@@ -29,11 +29,11 @@ const Graine = ({ history }) => {
     //__________________________________fonction_______________________________________
 
     const deleteSeed = (id) => {
-        try {
+        if (window.confirm('Are you sure you want to delete this seed?')) {
             dispatch(deleteSeedAction(id));
             toast.success('Suprimer avec success!!');
             dispatch(fetchSeed());
-        } catch (error) {}
+        }
     };
 
     return (
@@ -93,7 +93,9 @@ const Graine = ({ history }) => {
                                         <td>{seed.comment}</td>
                                         <td>
                                             <div className="btnContent">
-                                                <Link to={`/admin/graine/edit/${seed._id}`}>
+                                                <Link
+                                                    to={`/admin/graine/edit/${seed._id}`}
+                                                >
                                                     <i class="fas fa-edit fa-2x btnEdit"></i>
                                                 </Link>
                                                 <i
