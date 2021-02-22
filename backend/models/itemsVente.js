@@ -8,7 +8,7 @@ const ItemsVenteSchema = new Schema({
         required: [true, 'nom obligatoire, merci'],
 
     },
-    sousName: {
+    cultivar: {
         type: String,
         required: [true, 'nom obligatoire, merci']
     },

@@ -7,14 +7,14 @@ import Spinner from '../../spinner/Spinner';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const Graine = ({ history }) => {
+const VenteItemsAdmin = ({ history }) => {
     const dispatch = useDispatch();
 
     const {
-        allSeed: { data: seeds },
+        items: { data: items },
         loading,
         error,
-    } = useSelector((state) => state.seeds);
+    } = useSelector((state) => state.itemsVente);
     const { userInfo } = useSelector((state) => state.userLogin);
 
     useEffect(() => {
@@ -38,9 +38,9 @@ const Graine = ({ history }) => {
 
     return (
         <div className="containerAdminSeed">
-            <h1>Liste des graines</h1>
+            <h1>Produit en vente</h1>
             <div>
-                <Link to="/admin/graine/add">
+                <Link to="/admin/itemsVente/add">
                     <i className="fas fa-plus-circle fa-5x addBtn"></i>
                 </Link>
             </div>
@@ -52,56 +52,37 @@ const Graine = ({ history }) => {
                     <thead>
                         <tr>
                             <th>Legume</th>
-                            <th>cultivar</th>
-                            <th>Début-semis</th>
-                            <th>Fin-Semis</th>
+                            <th>Cultivar</th>
+                            <th>Category</th>
                             <th>Quantités</th>
-                            <th>Commentaire</th>
+                            <th>Description</th>
+                            <th>Photo</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {seeds &&
-                            seeds.map((seed) => {
+                        {items &&
+                            items.map((item) => {
                                 return (
-                                    <tr key={seed._id}>
-                                        <td>{seed.legume}</td>
-                                        <td>{seed.cultivar}</td>
-                                        <td>
-                                            {new Date(
-                                                seed.startSemis
-                                            ).getUTCDate() +
-                                                '/' +
-                                                (new Date(
-                                                    seed.startSemis
-                                                ).getUTCMonth() +
-                                                    1)}
-                                        </td>
-                                        <td>
-                                            {new Date(
-                                                seed.endSemis
-                                            ).getUTCDate() +
-                                                '/' +
-                                                (new Date(
-                                                    seed.endSemis
-                                                ).getUTCMonth() *
-                                                    1 +
-                                                    1)}
-                                        </td>
+                                    <tr key={item._id}>
+                                        <td>{item.legume}</td>
+                                        <td>{item.cultivar}</td>
+                                        <td>{item.category}</td>
+                                        <td>{item.quantity}</td>
 
-                                        <td>{seed.quantity}</td>
-                                        <td>{seed.comment}</td>
+                                        <td>{item.description}</td>
+                                        <td>{item.photo}</td>
                                         <td>
                                             <div className="btnContent">
                                                 <Link
-                                                    to={`/admin/graine/edit/${seed._id}`}
+                                                    to={`/admin/graine/edit/${item._id}`}
                                                 >
                                                     <i class="fas fa-edit fa-2x btnEdit"></i>
                                                 </Link>
                                                 <i
                                                     class="fas fa-trash fa-2x btnTrash"
                                                     onClick={() =>
-                                                        deleteSeed(seed._id)
+                                                        deleteSeed(item._id)
                                                     }
                                                 ></i>
                                             </div>
@@ -116,4 +97,4 @@ const Graine = ({ history }) => {
     );
 };
 
-export default Graine;
+export default VenteItemsAdmin;
