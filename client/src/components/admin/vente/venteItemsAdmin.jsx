@@ -40,7 +40,7 @@ const VenteItemsAdmin = ({ history }) => {
         <div className="containerAdminSeed">
             <h1>Produit en vente</h1>
             <div>
-                <Link to="/admin/itemsVente/add">
+                <Link to="/admin/produitVente/add">
                     <i className="fas fa-plus-circle fa-5x addBtn"></i>
                 </Link>
             </div>
@@ -65,7 +65,7 @@ const VenteItemsAdmin = ({ history }) => {
                             items.map((item) => {
                                 return (
                                     <tr key={item._id}>
-                                        <td>{item.legume}</td>
+                                        <td>{item.name}</td>
                                         <td>{item.cultivar}</td>
                                         <td>{item.category}</td>
                                         <td>{item.quantity}</td>

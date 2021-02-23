@@ -1,57 +1,48 @@
-import React,{ useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../addGraine.style.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import ButtonP from '../../../components/button/ButtonP';
 import { renderInput } from '../../../components/renderInput/RenderInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddItemsReducer } from '../../../redux/actions/venteItemsActions';
+import { AddVenteItems } from '../../../redux/actions/venteItemsActions';
 import { toast } from 'react-toastify';
 
 const AddGraine = ({ history, handleSubmit }) => {
     const dispatch = useDispatch();
 
-    // const { addGraine } = useSelector((state) => state.form);
-    const {error, success} = useSelector((state) => state.addSeed);
+    const { addItemsVente } = useSelector((state) => state.form);
+    const { error, success } = useSelector((state) => state.addItemsVente);
 
-
-    useEffect(()=>{
-
-        if(success){
+    useEffect(() => {
+        if (success) {
             toast.success(
-                // `${addGraine.values.legume} a été ajouter avec succsé`
+                `${addItemsVente.values.nom} a été ajouter avec succsé`
             );
             history.push('/admin/produitVente');
         }
 
-        if(error){
+        if (error) {
             toast.error(error.message);
-
         }
-
-        
-    },[dispatch,history,success,error, addGraine]);
+    }, [success, history, error]);
 
     const onHandleSubmit = () => {
-
-            dispatch(AddItemsReducer());
-
+        dispatch(AddVenteItems(addItemsVente.values));
     };
 
     return (
         <div className="AddGrainePage">
-
             {/* {error && toast.error(error)} */}
-            <h1>Ajouter une graine au catalogue</h1>
+            <h1>Ajouter un Produit </h1>
             <div className="formulaire__form">
                 <form onSubmit={handleSubmit(onHandleSubmit)} className="form">
                     <Field
-                        name="legume"
+                        name="name"
                         component={renderInput}
                         label="Legume"
                         placeholder="ex : tomate !"
                         type="text"
-                        
                     />
 
                     <Field
@@ -62,21 +53,15 @@ const AddGraine = ({ history, handleSubmit }) => {
                         placeholder="ex : green-zebra !"
                     />
 
-                    <Field
-                        name="startSemis"
-                        type="date"
-                        component={renderInput}
-                        label="debut du semis"
-                        placeholder="ex : dd/mm/yyyy !"
-                    />
+                    <label className="form__label">Categorie ?</label>
+                    <div className = "form__group ">
+                        <Field name="category" component="select" className="form__input">
+                            <option value="none" select>None</option>
+                            <option value="legume">Legume</option>
+                            <option value="plant">Plant</option>
 
-                    <Field
-                        name="endSemis"
-                        type="date"
-                        component={renderInput}
-                        label="Fin du semis"
-                        placeholder="ex : dd/mm/yyyy !"
-                    />
+                        </Field>
+                    </div>
 
                     <Field
                         name="quantity"
@@ -87,18 +72,20 @@ const AddGraine = ({ history, handleSubmit }) => {
                     />
 
                     <Field
-                        name="comment"
+                        name="description"
                         type="text"
                         component={renderInput}
                         label="Commentaire"
-                        placeholder="ex : balibalo  dans son... !"
+                        placeholder="ex : tomate Rouge !!! !"
                     />
+
+                    {/* TODO: AJOUTER LE FIELD PHOTO */}
 
                     <hr />
                     <div className="reset">
                         <ButtonP>
                             <Link to="/admin/graine">
-                                <button className='loginBtn'>
+                                <button className="loginBtn">
                                     <i className="fas fa-arrow-left"></i>
                                     retour
                                 </button>

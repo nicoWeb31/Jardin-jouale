@@ -5,6 +5,7 @@ import User from '../../components/admin/user/User';
 import VenteItemsAdmin from '../../components/admin/vente/venteItemsAdmin';
 import AddGraine from '../formuaire/graine/AddGraine';
 import EditGraine from '../formuaire/graine/EditGraine';
+import AddVenteItems from '../formuaire/vente/AddVenteItems';
 import './Admin.style.scss';
 
 const Admin = () => {
@@ -40,6 +41,8 @@ const Admin = () => {
                         <Route path={`${path}/graine/edit/:id`} exact component={EditGraine} />
 
                         <Route path={`${path}/produitVente`} exact component={VenteItemsAdmin} />
+                        <Route path={`${path}/produitVente/add`} exact component={AddVenteItems} />
+
 
 
 

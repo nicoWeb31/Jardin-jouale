@@ -34,7 +34,7 @@ export const fetchItemsReducer = (state = { items: [] }, action) => {
 
 
 
-export const addItemsReducer = (state, action) => {
+export const addItemsReducer = (state={}, action) => {
     switch (action.type) {
         case CREATE_VENTEITEMS_REQUEST:
             return {
