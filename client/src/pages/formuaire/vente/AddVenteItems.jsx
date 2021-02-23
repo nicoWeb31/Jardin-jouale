@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import ButtonP from '../../../components/button/ButtonP';
 import { renderInput } from '../../../components/renderInput/RenderInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSeed } from '../../../redux/actions/seedActions';
+import { AddItemsReducer } from '../../../redux/actions/venteItemsActions';
 import { toast } from 'react-toastify';
 
 const AddGraine = ({ history, handleSubmit }) => {
     const dispatch = useDispatch();
 
-    const { addGraine } = useSelector((state) => state.form);
+    // const { addGraine } = useSelector((state) => state.form);
     const {error, success} = useSelector((state) => state.addSeed);
 
 
@@ -19,9 +19,9 @@ const AddGraine = ({ history, handleSubmit }) => {
 
         if(success){
             toast.success(
-                `${addGraine.values.legume} a été ajouter avec succsé`
+                // `${addGraine.values.legume} a été ajouter avec succsé`
             );
-            history.push('/admin/graine');
+            history.push('/admin/produitVente');
         }
 
         if(error){
@@ -34,7 +34,7 @@ const AddGraine = ({ history, handleSubmit }) => {
 
     const onHandleSubmit = () => {
 
-            dispatch(addSeed(addGraine.values));
+            dispatch(AddItemsReducer());
 
     };
 
@@ -135,4 +135,4 @@ const validate = (formValues) => {
     return errors;
 };
 
-export default reduxForm({ form: 'addGraine', validate })(AddGraine);
+export default reduxForm({ form: 'addItemsVente', validate })(AddGraine);

@@ -15,7 +15,7 @@ import {
     detailSeedReducer,
     UpdateSeedReducer,
 } from '../redux/reducers/seedReducer';
-import { fetchItemsReducer } from '../redux/reducers/venteItemsReducer';
+import { fetchItemsReducer,addItemsReducer } from '../redux/reducers/venteItemsReducer';
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
@@ -27,6 +27,7 @@ const reducer = combineReducers({
     detailSeed: detailSeedReducer,
     updateSeed: UpdateSeedReducer,
     itemsVente: fetchItemsReducer,
+    addItemsVente: addItemsReducer,
     form: reduxForm,
 });
 
