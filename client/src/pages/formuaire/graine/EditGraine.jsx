@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './addGraine.style.scss';
+import '../addGraine.style.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import ButtonP from '../../../components/button/ButtonP';
